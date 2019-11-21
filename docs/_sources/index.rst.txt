@@ -10,6 +10,7 @@ Welcome to atlab-docs's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   datajoint
 
 
 Indices and tables
