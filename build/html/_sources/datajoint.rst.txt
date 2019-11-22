@@ -1,16 +1,36 @@
-=======
-datajoint
-=======
+=========
+DataJoint
+=========
 
-Datajoint was a database python interface package that created by our lab and currently managed by Vathes
+Datajoint is a python package created by Vathes to allow eaiser access and data pipeline creation without directly interfacing with a SQL Database which would require learning SQL commands as well as how to use the connector to send those queries to the database.
+
+For example, let say we want to join two tables name table_1 and table_2 and get all the data from it:
+
+In (SQL) this is the query we have to write which then get fed through connector package:
+
+.. code-block:: SQL
+    :linenos:
+
+    SELECT *
+    FROM table_1
+    INNER JOIN table_2 ON join_condition;
+
+On the other hand with DataJoint (python) all we need to do is write this line:
+
+.. code-block:: python
+    :linenos:
+
+    (table_1 * table_2).fetch()
 
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-The easiest way to get help with the project is to join the ``#crawler``
-channel on Freenode_. We hang out there and you can get real-time help with
-your projects.  The other good way is to open an issue on Github_.
+   datajoint_setup
 
-The mailing list at https://groups.google.com/forum/#!forum/crawler is also available for support.
+| **Other Resources:**
 
-.. _Freenode: irc://freenode.net
-.. _Github: http://github.com/example/crawler/issues
+| DataJoint Full Documentation: https://docs.datajoint.io/python/ \n
+| GitHub: https://github.com/datajoint/datajoint-python
+

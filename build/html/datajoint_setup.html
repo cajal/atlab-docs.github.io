@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>DataJoint &mdash; atlab-docs 0.0.0 documentation</title>
+  <title>Setting Up Datajoint &mdash; atlab-docs 0.0.0 documentation</title>
   
 
   
@@ -44,8 +44,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Setting Up Datajoint" href="datajoint_setup.html" />
-    <link rel="prev" title="Welcome to atlab-docs’s documentation!" href="index.html" /> 
+    <link rel="prev" title="DataJoint" href="datajoint.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,8 +94,9 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">DataJoint</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="datajoint_setup.html">Setting Up Datajoint</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="datajoint.html">DataJoint</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setting Up Datajoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datajoint.html#other-resources">Other Resources</a></li>
 </ul>
 </li>
 </ul>
@@ -144,13 +144,15 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>DataJoint</li>
+          <li><a href="datajoint.html">DataJoint</a> &raquo;</li>
+        
+      <li>Setting Up Datajoint</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/datajoint.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/datajoint_setup.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,35 +165,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="datajoint">
-<h1>DataJoint<a class="headerlink" href="#datajoint" title="Permalink to this headline">¶</a></h1>
-<p>Datajoint is a python package created by Vathes to allow eaiser access and data pipeline creation without directly interfacing with a SQL Database which would require learning SQL commands as well as how to use the connector to send those queries to the database.</p>
-<p>For example, let say we want to join two tables name table_1 and table_2 and get all the data from it:</p>
-<p>In (SQL) this is the query we have to write which then get fed through connector package:</p>
-<div class="highlight-SQL"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
-<span class="k">FROM</span> <span class="n">table_1</span>
-<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">table_2</span> <span class="k">ON</span> <span class="n">join_condition</span><span class="p">;</span>
-</pre></div>
-</td></tr></table></div>
-<p>On the other hand with DataJoint (python) all we need to do is write this line:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">table_1</span> <span class="o">*</span> <span class="n">table_2</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
-</pre></div>
-</td></tr></table></div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="datajoint_setup.html">Setting Up Datajoint</a></li>
-</ul>
-</div>
-<div class="line-block">
-<div class="line"><strong>Other Resources:</strong></div>
-</div>
-<div class="line-block">
-<div class="line">DataJoint Full Documentation: <a class="reference external" href="https://docs.datajoint.io/python/">https://docs.datajoint.io/python/</a> n</div>
-<div class="line">GitHub: <a class="reference external" href="https://github.com/datajoint/datajoint-python">https://github.com/datajoint/datajoint-python</a></div>
-</div>
+  <div class="section" id="setting-up-datajoint">
+<h1>Setting Up Datajoint<a class="headerlink" href="#setting-up-datajoint" title="Permalink to this headline">¶</a></h1>
+<p>Setting up datajoint</p>
 </div>
 
 
@@ -202,10 +178,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="datajoint_setup.html" class="btn btn-neutral float-right" title="Setting Up Datajoint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to atlab-docs’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="datajoint.html" class="btn btn-neutral float-left" title="DataJoint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
