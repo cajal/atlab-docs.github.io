@@ -96,6 +96,16 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">DataJoint</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#why-should-you-use-datajoint">Why Should You Use DataJoint?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-datajoint">Installing DataJoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-login-credentials">Setting Up Login Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-basics-of-datajoint">Overview of the Basics of DataJoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schema">Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#table-definition">Table Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datatypes">Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-storage">External Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dj-manual">dj.Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dj-computed">dj.Computed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dj-lookup">dj.Lookup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-resources">Other Resources:</a></li>
 </ul>
 </li>
@@ -181,6 +191,163 @@
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">table_1</span> <span class="o">*</span> <span class="n">table_2</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
+</div>
+<div class="section" id="installing-datajoint">
+<h2>Installing DataJoint<a class="headerlink" href="#installing-datajoint" title="Permalink to this headline">¶</a></h2>
+<p>Datajoint can be installed via pip3 or via Anaconda</p>
+<p>pip3:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">datajoint</span>
+</pre></div>
+</td></tr></table></div>
+<p>Anaconda:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">datajoint</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="setting-up-login-credentials">
+<h2>Setting Up Login Credentials<a class="headerlink" href="#setting-up-login-credentials" title="Permalink to this headline">¶</a></h2>
+<p>To get your datajoint login, please contact Daniel Sitonic on Slack, he will be able to create your database credential.
+Datajoint will then use those credentials to login into the database and allow you to use it.</p>
+<p>This is the basic setup of the login information for datajoint. This only needs to be run once per computer.
+In Docker this is done by setting the enviorment variables which datajoint will use (more details on K8 stuff)</p>
+<p>pip3:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
+
+<span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;database.host&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;at-database1.ad.bcm.edu&#39;</span> <span class="c1"># This the database server, yes you must VPN into Baylor</span>
+<span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;database.username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;yourusername&#39;</span> <span class="c1"># Provided when you setup an account with Daniel</span>
+<span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;database.password&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;NotMyRealPassword&#39;</span> <span class="c1"># Provided when you setup an account with Daniel</span>
+
+<span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">save_global</span><span class="p">()</span> <span class="c1"># Save the information above on your machine so you don&#39;t have to do this again.</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="overview-of-the-basics-of-datajoint">
+<h2>Overview of the Basics of DataJoint<a class="headerlink" href="#overview-of-the-basics-of-datajoint" title="Permalink to this headline">¶</a></h2>
+<p>DataJoint has several table classes that serves as the bases for all tables the user will need:</p>
+<ul class="simple">
+<li>dj.Manual</li>
+<li>dj.Computed</li>
+<li>dj.Lookup</li>
+<li>dj.Imported</li>
+<li>dj.Part</li>
+</ul>
+<p>We will mostly only focus on the dj.Manual, dj.Computed, and dj.Lookup</p>
+</div>
+<div class="section" id="schema">
+<h2>Schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h2>
+<p>Each table in the database belongs to something call a schema which is a logical representation of database. In short each schema has a collection of
+tables which can only be access via that schema.</p>
+<p>In datajoint, to select what schema the table should be place under, datajoint uses class decarators:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span> <span class="c1"># This is how you set the schema</span>
+
+<span class="c1"># Example Manual table, more detail explinations on the following sections</span>
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    student_id : int unsigned</span>
+<span class="s2">    ---</span>
+<span class="s2">    first_name : varchar(64)</span>
+<span class="s2">    last_name : varchar(64)</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p><strong>NOTE: By default the user are only given permission to create and access schemas with user_*, all other schemas access permission must go through Daniel</strong></p>
+</div>
+<div class="section" id="table-definition">
+<h2>Table Definition<a class="headerlink" href="#table-definition" title="Permalink to this headline">¶</a></h2>
+<p>For each table define in datajoint, there are a set of primary and non-primary attributes (columns) that is use to define what is contain inside of the table where primary
+attributes are what uniquely identify each tuple.</p>
+<p>In datajoint table, each class has a field call definition, which define the primary and non-primary attributes of the table as well as its datatype.
+Every attributes that is define above “- - -” (line 10) is consider to be primary, while everything below is not.</p>
+<p>Each attributes the attribute name on the left followed by “:” then the datatype of the attribute.
+Details on the datatypes can be found in the next section.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span> <span class="c1"># This is how you set the schema</span>
+
+<span class="c1"># Example Manual table, more detail explinations on the following sections</span>
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    student_id : int unsigned</span>
+<span class="s2">    ---</span>
+<span class="s2">    first_name : varchar(64)</span>
+<span class="s2">    last_name : varchar(64)</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>One important note about primary attributes are index, meaning any restrictions are join done on those attributes are vastly faster then on non-primary attributes</p>
+<p>Also for tips in designing primary attributes, if the table have a lot of primary key attributes, it will probably be better to do an MD5 hash in those cases, but this varies.</p>
+</div>
+<div class="section" id="datatypes">
+<h2>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h2>
+<p>These are the datatype that datajoint supports:</p>
+<ul class="simple">
+<li><strong>tinyint:</strong> an 8-bit integer number, ranging from -128 to 127.</li>
+<li><strong>tinyint unsigned:</strong> an 8-bit positive integer number, ranging from 0 to 255.</li>
+<li><strong>smallint:</strong> a 16-bit integer number, ranging from -32,768 to 32,767.</li>
+<li><strong>smallint unsigned:</strong> a 16-bit positive integer, ranging from 0 to 65,535.</li>
+<li><strong>int:</strong> a 32-bit integer number, ranging from -2,147,483,648 to 2,147,483,647.</li>
+<li><strong>int unsigned:</strong> a 32-bit positive integer, ranging from 0 to 4,294,967,295.</li>
+<li><strong>enum:</strong> one of several explicitly enumerated values specified as strings. Use this datatype instead of text strings to avoid spelling variations and to save storage space. For example, for anesthesia, the datatype could be enum(“urethane”, “isoflurane”, “fentanyl”). Do not use enums in primary keys due to the difficulty of changing their definitions consistently in multiple tables.</li>
+<li><strong>date:</strong> date as ‘YYYY-MM-DD’.</li>
+<li><strong>time:</strong> time as ‘HH:MM:SS’.</li>
+<li><strong>timestamp:</strong> Date and time to the second as ‘YYYY-MM-DD HH:MM:SS’. The default value may be set to CURRENT_TIMESTAMP.</li>
+<li><strong>char(N):</strong> a character string up to N characters (but always takes the entire N bytes to store).</li>
+<li><strong>varchar(N):</strong> a text string of arbitrary length up to N characters that takes N+1 or N+2 bytes of storage.</li>
+<li><strong>float:</strong> a single-precision floating-point number. Takes 4 bytes. Single precision is sufficient for many measurements.</li>
+<li><strong>double:</strong> a double-precision floating-point number. Takes 8 bytes. Because equality comparisons are error-prone, neither float nor double should be used in primary keys.</li>
+<li><strong>decimal(N,F):</strong> a fixed-point number with N total decimal digits and F fractional digits. This datatype is well suited to represent numbers whose magnitude is well defined and does not warrant the use of floating-point representation or requires precise decimal representations (e.g. dollars and cents). Because of its well-defined precision, decimal values can be used in equality comparison and be included in primary keys.</li>
+<li><strong>longblob:</strong> arbitrary MATLAB value (e.g. matrix, image, structure), up to 4 GiB in size. In Python, arbitrary numeric numpy array. Numeric arrays are compatible between MATLAB and Python.</li>
+<li><strong>decimal(N,F) unsigned:</strong> same as decimal, but limited to nonnegative values.</li>
+<li><strong>mediumint:</strong> a 24-bit integer number, ranging from -8,388,608 to 8,388,607.</li>
+<li><strong>mediumint unsigned:</strong> a 24-bit positive integer, ranging from 0 to 16,777,216.</li>
+</ul>
+</div>
+<div class="section" id="external-storage">
+<h2>External Storage<a class="headerlink" href="#external-storage" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="dj-manual">
+<h2>dj.Manual<a class="headerlink" href="#dj-manual" title="Permalink to this headline">¶</a></h2>
+<p>In datajoint, for each</p>
+</div>
+<div class="section" id="dj-computed">
+<h2>dj.Computed<a class="headerlink" href="#dj-computed" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="dj-lookup">
+<h2>dj.Lookup<a class="headerlink" href="#dj-lookup" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="other-resources">
 <h2>Other Resources:<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h2>
