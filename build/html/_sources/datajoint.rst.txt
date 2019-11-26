@@ -140,8 +140,8 @@ One important note about primary attributes are index, meaning any restrictions 
 Also for tips in designing primary attributes, if the table have a lot of primary key attributes, it will probably be better to do an MD5 hash in those cases, but this varies.
 
 
-Datatypes
----------
+Data Types
+----------
 These are the datatype that datajoint supports:
 
 - **tinyint:** an 8-bit integer number, ranging from -128 to 127.
@@ -167,6 +167,31 @@ These are the datatype that datajoint supports:
 
 External Storage
 ----------------
+
+There are many use cases where the storage of large arrays of floats, ints, etc. is needed, however through storing it in a longblob datatype works, there are several disadvantagoues that should be considered.
+All longblobs are stored direclty into the database server, meaning it can be very easy to fill up the storage on the database server causing many issues down the line. The other major problem is that each time there is a request 
+to fetch the longblob, the database has to handle that which will bogged down the IO performance on the server.
+
+External-storage is a datatype that datajoint provides that allow the storage of large numerical arrays to be stored on a external storage location like an network storage server instead of directly on the database server. 
+This allows user to store massive amount of data without filling up the database, which will cause serveral problems down the line. In short it works exactly like longblob except with the 
+addition of requirement of telling datajoint where the external storage is located.
+
+.. code-block:: python
+    :linenos:
+
+    # external-storage has to be configure each time you load the definition and be accessable from the machine you are running from
+    dj.config['external-storage'] = dict(protocol='file', location='/mnt/scratch07/datajoint_quick_introduction')
+
+    @schema
+    class ScanData(dj.Manual):
+        definition = """
+        scan_id : int unsigned
+        ---
+        scan_data : external-storage
+        """
+        
+    import numpy as np
+    ScanData.insert1(dict(scan_id = 1, scan_data = np.ones(shape=(500,500)))) # works just like longblob
 
 
 dj.Manual

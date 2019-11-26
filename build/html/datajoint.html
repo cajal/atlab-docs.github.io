@@ -101,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview-of-the-basics-of-datajoint">Overview of the Basics of DataJoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#schema">Schema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#table-definition">Table Definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datatypes">Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-types">Data Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#external-storage">External Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-manual">dj.Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-computed">dj.Computed</a></li>
@@ -311,8 +311,8 @@ Details on the datatypes can be found in the next section.</p>
 <p>One important note about primary attributes are index, meaning any restrictions are join done on those attributes are vastly faster then on non-primary attributes</p>
 <p>Also for tips in designing primary attributes, if the table have a lot of primary key attributes, it will probably be better to do an MD5 hash in those cases, but this varies.</p>
 </div>
-<div class="section" id="datatypes">
-<h2>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
 <p>These are the datatype that datajoint supports:</p>
 <ul class="simple">
 <li><strong>tinyint:</strong> an 8-bit integer number, ranging from -128 to 127.</li>
@@ -338,6 +338,39 @@ Details on the datatypes can be found in the next section.</p>
 </div>
 <div class="section" id="external-storage">
 <h2>External Storage<a class="headerlink" href="#external-storage" title="Permalink to this headline">¶</a></h2>
+<p>There are many use cases where the storage of large arrays of floats, ints, etc. is needed, however through storing it in a longblob datatype works, there are several disadvantagoues that should be considered.
+All longblobs are stored direclty into the database server, meaning it can be very easy to fill up the storage on the database server causing many issues down the line. The other major problem is that each time there is a request
+to fetch the longblob, the database has to handle that which will bogged down the IO performance on the server.</p>
+<p>External-storage is a datatype that datajoint provides that allow the storage of large numerical arrays to be stored on a external storage location like an network storage server instead of directly on the database server.
+This allows user to store massive amount of data without filling up the database, which will cause serveral problems down the line. In short it works exactly like longblob except with the
+addition of requirement of telling datajoint where the external storage is located.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># external-storage has to be configure each time you load the definition and be accessable from the machine you are running from</span>
+<span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;external-storage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;/mnt/scratch07/datajoint_quick_introduction&#39;</span><span class="p">)</span>
+
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">ScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    scan_id : int unsigned</span>
+<span class="s2">    ---</span>
+<span class="s2">    scan_data : external-storage</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">scan_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">500</span><span class="p">))))</span> <span class="c1"># works just like longblob</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="dj-manual">
 <h2>dj.Manual<a class="headerlink" href="#dj-manual" title="Permalink to this headline">¶</a></h2>
