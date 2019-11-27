@@ -193,17 +193,168 @@ addition of requirement of telling datajoint where the external storage is locat
     import numpy as np
     ScanData.insert1(dict(scan_id = 1, scan_data = np.ones(shape=(500,500)))) # works just like longblob
 
-
 dj.Manual
 ---------
 
-In datajoint, for each 
+dj.Manual tables that require the manual insertion of tuples by the users, this doesn't neccesearly mean fully manual as the user can right a method to do the insertion for them base on the provided parameteres.
+In our convention we often call this method fill. This is not a programmatic requirement, just the convention we use in the lab.
+
+.. code-block:: python
+    :linenos:
+
+    # Setting up schema
+    schema = dj.schema('synicix_datajoint_tutorial')
+
+    # dj.Manual table definition
+    @schema
+    class Student(dj.Manual):
+        definition = """
+        student_id : int unsigned
+        ---
+        first_name : varchar(64)
+        last_name : varchar(64)
+        """
+
+        # Example of user define function
+        @staticmethod
+        def fill(num_of_tuples_to_insert):\
+            """
+            Function to insert 10 example tuples into the table Student. Also please document your functions
+            in this format so Sphnix can auto docs for you later.
+
+            Args:
+                num_of_tuples_to_insert (int): number of tuples to insert into the Student table
+
+            Returns:
+                None
+            """
+
+            # Note that the key values of the dict must match the attribute names in the table
+            for i in range(num_of_tuples_to_insert):
+                # Create a dictionary with corresponding keys to the table we are inserting
+                dict_to_insert = dict(
+                student_id = i,
+                first_name = 'Daniel' + str(i),
+                last_name = 'Sitonic' + str(i))
+
+                Student.insert1(dict_to_insert) # Inserting the tuple into the Student Table
 
 dj.Computed
 -----------
 
-dj.Lookup
----------
+dj.Computed tables are very similar to dj.Manual execpt that instead of inserting each entry manually, the entry 
+will be instead computed from a pre-define function that the user wrote, hence the the name computed.
+
+There is two main distictions that a dj.computed tables has verses it dj.Manual counter part:
+
+- Foreign Key Reference: Computed table tend to reference the primary attributes from another table where for each primary key serves as the input parameteres for the computation define by the user in the make function.
+
+- make(self, key) function: This function is where the user defines his or her computation where the key being passed in forgien key reference or references define in the computed table definition.
+
+These two work together to establish a computation data pipeline which is the main purpose of datajoint.
+For example, a typical pipeline might look something like this: Scan Data -> Post-Scan Processing Comptuation -> Processed Data for Data Analysis -> etc.
+
+The other major feature of dj.Computed tables is that it can serve as a synchonize and atomic job queue for multiple instances of your application via
+the populate function which is called to start the computation of each row. This is particularly useful in cases with
+Kubernetes cluster deployment where you can deploy like a 1000+ instances of the application where datajoint will handle
+telling each instance what key they should do their computation on so that there is no overlap.
+
+Here is an example dj.Computed table:
+
+.. code-block:: python
+    :linenos:
+
+    import datajoint as dj
+    import numpy as np
+
+    schema = dj.schema('synicix_datajoint_tutorial')
+
+    # dj.Manual table that will serve as the parent table for the computed table
+    @schema
+    class ScanData(dj.Manual):
+        definition = """
+        scan_id : int unsigned
+        ---
+        scan_data : longblob
+        """
+        
+    @schema
+    class ProcessedScanData(dj.Computed):
+        definition = """
+        -> ScanData # Forigen Key Reference
+        ---
+        processed_scan_data : longblob
+        """
+        
+        def make(self, key):
+            """
+            Function that computes processed_scan_data which is 2 * scan data from the ScanData Table
+            
+            Args:
+                key(dict) : dictionary that contains the primary key of ScanData to do computation on
+            
+            Returns:
+                None
+            """
+            
+            scan_data_dict = (ScanData & key).fetch1() # Get all attributes of the tuple entry (More details on the syntax in the Querying Tables section)
+            key['processed_scan_data'] = scan_data_dict['scan_data'] * 2 # Get the scan_data array and multiply by 2
+            
+            self.insert1(key) # Insert the key which now has all the require attributes to insert into ProcessedScanData
+            
+    # Some example usage
+    ScanData.insert1(dict(scan_id=5, scan_data=np.ones(5))) # Insert 1 tuple into Scan Data
+    ProcessedScanData.populate()
+
+
+Querying Tables
+---------------
+
+Getting data as well as applying simple restrictions on the tables is very simple with datajoint.
+Take a look at the examples below:
+
+.. code-block:: python
+    :linenos:
+
+    import datajoint as dj
+    import numpy as np
+
+    schema = dj.schema('synicix_datajoint_tutorial')
+
+    # dj.Manual table that will serve as the parent table for the computed table
+    @schema
+    class ScanData(dj.Manual):
+        definition = """
+        scan_id : int unsigned
+        ---
+        scan_data : longblob
+        """
+
+    # Inserting a few tuples into the table
+    ScanData.insert1(dict(scan_id=5, scan_data=np.ones(5)))
+    ScanData.insert1(dict(scan_id=6, scan_data=np.ones(5)))
+
+    # Querying the table to see what entires are there
+    ScanData()
+
+    # Get all the tuples in ScanData as an array of tuples
+    ScanData().fetch()
+
+    # Get all the tuples as a list of dict
+    ScanData().fetch(as_dict=True)
+
+    # Restricting ScanData tuples by the condition where scan_id == 5 with restriction by a dict
+    ScanData() & dict(scan_id=5)
+
+    # Alternative way of doing it 
+    # (Note that for string the value should be surronded by "" i.e. 'str_attr="asdfjl"', but in general try to avoid doing restrictions on varchar and longblob as those are expensive)
+    ScanData() & 'scan_id=5'
+
+    # If the restriction results in only 1 tuple then we can do fetch1
+    (ScanData & 'scan_id=5').fetch1() # Return a dict
+
+    # For more complicated restrictions such as getting scan_id < 6
+    ScanData() & 'scan_id < 5'
     
 
 Other Resources:

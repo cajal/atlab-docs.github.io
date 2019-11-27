@@ -101,11 +101,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#overview-of-the-basics-of-datajoint">Overview of the Basics of DataJoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#schema">Schema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#table-definition">Table Definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datatypes">Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-types">Data Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#external-storage">External Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-manual">dj.Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-computed">dj.Computed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dj-lookup">dj.Lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-tables">Querying Tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-resources">Other Resources:</a></li>
 </ul>
 </li>
@@ -311,8 +311,8 @@ Details on the datatypes can be found in the next section.</p>
 <p>One important note about primary attributes are index, meaning any restrictions are join done on those attributes are vastly faster then on non-primary attributes</p>
 <p>Also for tips in designing primary attributes, if the table have a lot of primary key attributes, it will probably be better to do an MD5 hash in those cases, but this varies.</p>
 </div>
-<div class="section" id="datatypes">
-<h2>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
 <p>These are the datatype that datajoint supports:</p>
 <ul class="simple">
 <li><strong>tinyint:</strong> an 8-bit integer number, ranging from -128 to 127.</li>
@@ -338,16 +338,301 @@ Details on the datatypes can be found in the next section.</p>
 </div>
 <div class="section" id="external-storage">
 <h2>External Storage<a class="headerlink" href="#external-storage" title="Permalink to this headline">¶</a></h2>
+<p>There are many use cases where the storage of large arrays of floats, ints, etc. is needed, however through storing it in a longblob datatype works, there are several disadvantagoues that should be considered.
+All longblobs are stored direclty into the database server, meaning it can be very easy to fill up the storage on the database server causing many issues down the line. The other major problem is that each time there is a request
+to fetch the longblob, the database has to handle that which will bogged down the IO performance on the server.</p>
+<p>External-storage is a datatype that datajoint provides that allow the storage of large numerical arrays to be stored on a external storage location like an network storage server instead of directly on the database server.
+This allows user to store massive amount of data without filling up the database, which will cause serveral problems down the line. In short it works exactly like longblob except with the
+addition of requirement of telling datajoint where the external storage is located.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># external-storage has to be configure each time you load the definition and be accessable from the machine you are running from</span>
+<span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;external-storage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;/mnt/scratch07/datajoint_quick_introduction&#39;</span><span class="p">)</span>
+
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">ScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    scan_id : int unsigned</span>
+<span class="s2">    ---</span>
+<span class="s2">    scan_data : external-storage</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">scan_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">500</span><span class="p">))))</span> <span class="c1"># works just like longblob</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="dj-manual">
 <h2>dj.Manual<a class="headerlink" href="#dj-manual" title="Permalink to this headline">¶</a></h2>
-<p>In datajoint, for each</p>
+<p>dj.Manual tables that require the manual insertion of tuples by the users, this doesn’t neccesearly mean fully manual as the user can right a method to do the insertion for them base on the provided parameteres.
+In our convention we often call this method fill. This is not a programmatic requirement, just the convention we use in the lab.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># Setting up schema</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
+
+<span class="c1"># dj.Manual table definition</span>
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    student_id : int unsigned</span>
+<span class="s2">    ---</span>
+<span class="s2">    first_name : varchar(64)</span>
+<span class="s2">    last_name : varchar(64)</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Example of user define function</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="n">num_of_tuples_to_insert</span><span class="p">):</span>\
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function to insert 10 example tuples into the table Student. Also please document your functions</span>
+<span class="sd">        in this format so Sphnix can auto docs for you later.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_of_tuples_to_insert (int): number of tuples to insert into the Student table</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Note that the key values of the dict must match the attribute names in the table</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_of_tuples_to_insert</span><span class="p">):</span>
+            <span class="c1"># Create a dictionary with corresponding keys to the table we are inserting</span>
+            <span class="n">dict_to_insert</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">student_id</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span>
+            <span class="n">first_name</span> <span class="o">=</span> <span class="s1">&#39;Daniel&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+            <span class="n">last_name</span> <span class="o">=</span> <span class="s1">&#39;Sitonic&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+            <span class="n">Student</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="n">dict_to_insert</span><span class="p">)</span> <span class="c1"># Inserting the tuple into the Student Table</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="dj-computed">
 <h2>dj.Computed<a class="headerlink" href="#dj-computed" title="Permalink to this headline">¶</a></h2>
+<p>dj.Computed tables are very similar to dj.Manual execpt that instead of inserting each entry manually, the entry
+will be instead computed from a pre-define function that the user wrote, hence the the name computed.</p>
+<p>There is two main distictions that a dj.computed tables has verses it dj.Manual counter part:</p>
+<ul class="simple">
+<li>Foreign Key Reference: Computed table tend to reference the primary attributes from another table where for each primary key serves as the input parameteres for the computation define by the user in the make function.</li>
+<li>make(self, key) function: This function is where the user defines his or her computation where the key being passed in forgien key reference or references define in the computed table definition.</li>
+</ul>
+<p>These two work together to establish a computation data pipeline which is the main purpose of datajoint.
+For example, a typical pipeline might look something like this: Scan Data -&gt; Post-Scan Processing Comptuation -&gt; Processed Data for Data Analysis -&gt; etc.</p>
+<p>The other major feature of dj.Computed tables is that it can serve as a synchonize and atomic job queue for multiple instances of your application via
+the populate function which is called to start the computation of each row. This is particularly useful in cases with
+Kubernetes cluster deployment where you can deploy like a 1000+ instances of the application where datajoint will handle
+telling each instance what key they should do their computation on so that there is no overlap.</p>
+<p>Here is an example dj.Computed table:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
+
+<span class="c1"># dj.Manual table that will serve as the parent table for the computed table</span>
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">ScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    scan_id : int unsigned</span>
+<span class="s2">    ---</span>
+<span class="s2">    scan_data : longblob</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">ProcessedScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Computed</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    -&gt; ScanData # Forigen Key Reference</span>
+<span class="s2">    ---</span>
+<span class="s2">    processed_scan_data : longblob</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">make</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function that computes processed_scan_data which is 2 * scan data from the ScanData Table</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key(dict) : dictionary that contains the primary key of ScanData to do computation on</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">scan_data_dict</span> <span class="o">=</span> <span class="p">(</span><span class="n">ScanData</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">fetch1</span><span class="p">()</span> <span class="c1"># Get all attributes of the tuple entry (More details on the syntax in the Querying Tables section)</span>
+        <span class="n">key</span><span class="p">[</span><span class="s1">&#39;processed_scan_data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scan_data_dict</span><span class="p">[</span><span class="s1">&#39;scan_data&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="c1"># Get the scan_data array and multiply by 2</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="c1"># Insert the key which now has all the require attributes to insert into ProcessedScanData</span>
+
+<span class="c1"># Some example usage</span>
+<span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scan_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span> <span class="c1"># Insert 1 tuple into Scan Data</span>
+<span class="n">ProcessedScanData</span><span class="o">.</span><span class="n">populate</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
 </div>
-<div class="section" id="dj-lookup">
-<h2>dj.Lookup<a class="headerlink" href="#dj-lookup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="querying-tables">
+<h2>Querying Tables<a class="headerlink" href="#querying-tables" title="Permalink to this headline">¶</a></h2>
+<p>Getting data as well as applying simple restrictions on the tables is very simple with datajoint.
+Take a look at the examples below:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
+
+<span class="c1"># dj.Manual table that will serve as the parent table for the computed table</span>
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">ScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    scan_id : int unsigned</span>
+<span class="s2">    ---</span>
+<span class="s2">    scan_data : longblob</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="c1"># Inserting a few tuples into the table</span>
+<span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scan_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+<span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scan_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+
+<span class="c1"># Querying the table to see what entires are there</span>
+<span class="n">ScanData</span><span class="p">()</span>
+
+<span class="c1"># Get all the tuples in ScanData as an array of tuples</span>
+<span class="n">ScanData</span><span class="p">()</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
+
+<span class="c1"># Get all the tuples as a list of dict</span>
+<span class="n">ScanData</span><span class="p">()</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">as_dict</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Restricting ScanData tuples by the condition where scan_id == 5 with restriction by a dict</span>
+<span class="n">ScanData</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Alternative way of doing it</span>
+<span class="c1"># (Note that for string the value should be surronded by &quot;&quot; i.e. &#39;str_attr=&quot;asdfjl&quot;&#39;, but in general try to avoid doing restrictions on varchar and longblob as those are expensive)</span>
+<span class="n">ScanData</span><span class="p">()</span> <span class="o">&amp;</span> <span class="s1">&#39;scan_id=5&#39;</span>
+
+<span class="c1"># If the restriction results in only 1 tuple then we can do fetch1</span>
+<span class="p">(</span><span class="n">ScanData</span> <span class="o">&amp;</span> <span class="s1">&#39;scan_id=5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fetch1</span><span class="p">()</span> <span class="c1"># Return a dict</span>
+
+<span class="c1"># For more complicated restrictions such as getting scan_id &lt; 6</span>
+<span class="n">ScanData</span><span class="p">()</span> <span class="o">&amp;</span> <span class="s1">&#39;scan_id &lt; 5&#39;</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="other-resources">
 <h2>Other Resources:<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h2>
