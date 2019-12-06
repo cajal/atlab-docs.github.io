@@ -1,9 +1,12 @@
-=========
-DataJoint
-=========
+========
+Stimulus
+========
 
-Why Should You Use DataJoint?
------------------------------
+blah blah blah
+--------------
+
+qodaofnsdifnaldkjsdfndf
+
 Datajoint is a python package created by Vathes to allow eaiser access and data pipeline creation without directly interfacing with a SQL Database which would require learning SQL commands as well as how to use the connector to send those queries to the database.
 
 For example, let say we want to join two tables name table_1 and table_2 and get all the data from it:

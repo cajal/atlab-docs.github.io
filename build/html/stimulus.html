@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; atlab-docs 0.0.0 documentation</title>
+  <title>Stimulus &mdash; atlab-docs 0.0.0 documentation</title>
   
 
   
@@ -34,7 +34,6 @@
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/searchtools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -44,7 +43,8 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="DataJoint" href="datajoint.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -75,7 +75,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -93,9 +93,13 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stimulus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#blah-blah-blah">blah blah blah</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-resources">Other Resources:</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -141,12 +145,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Stimulus</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/stimulus.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -158,24 +164,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="stimulus">
+<h1>Stimulus<a class="headerlink" href="#stimulus" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="blah-blah-blah">
+<h2>blah blah blah<a class="headerlink" href="#blah-blah-blah" title="Permalink to this headline">¶</a></h2>
+<p>qodaofnsdifnaldkjsdfndf</p>
+<p>Datajoint is a python package created by Vathes to allow eaiser access and data pipeline creation without directly interfacing with a SQL Database which would require learning SQL commands as well as how to use the connector to send those queries to the database.</p>
+<p>For example, let say we want to join two tables name table_1 and table_2 and get all the data from it:</p>
+<p>In (SQL) this is the query we have to write which then get fed through connector package:</p>
+<div class="highlight-SQL"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">table_1</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">table_2</span> <span class="k">ON</span> <span class="n">join_condition</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>On the other hand with DataJoint (python) all we need to do is write this line:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">table_1</span> <span class="o">*</span> <span class="n">table_2</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="other-resources">
+<h2>Other Resources:<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">DataJoint Full Documentation: <a class="reference external" href="https://docs.datajoint.io/python/">https://docs.datajoint.io/python/</a> n</div>
+<div class="line">GitHub: <a class="reference external" href="https://github.com/datajoint/datajoint-python">https://github.com/datajoint/datajoint-python</a></div>
+</div>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="datajoint.html" class="btn btn-neutral float-left" title="DataJoint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -208,14 +237,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

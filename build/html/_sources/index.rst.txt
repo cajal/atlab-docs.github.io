@@ -11,6 +11,7 @@ Welcome to atlab-docs's documentation!
    :caption: Contents:
 
    datajoint
+   stimulus
 
 
 Indices and tables
