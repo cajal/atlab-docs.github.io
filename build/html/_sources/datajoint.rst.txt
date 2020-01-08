@@ -356,6 +356,81 @@ Take a look at the examples below:
     # For more complicated restrictions such as getting scan_id < 6
     ScanData() & 'scan_id < 5'
     
+DataJoint Parallelizing dj.Computed Populate
+--------------------------------------------
+
+Often times there is a need to parallelize the population of a dj.Computed table, such as when each tuple takes considerable amount of time to compute.
+DataJoint offers a solution with this something call a jobs table which is tied to the schema that the dj.Computed table is under.
+
+To use it all we need to add an argument call reserved_jobs=True when we call .populate() function for a computed table. i.e.
+
+.. code-block:: python
+    :linenos:
+
+    import datajoint as dj
+    import numpy as np
+
+    schema = dj.schema('synicix_datajoint_tutorial')
+
+    @schema
+    class ScanData(dj.Manual):
+        definition = """
+        scan_id : int unsigned
+        ---
+        scan_data : longblob
+        """
+        
+    @schema
+    class ProcessedScanData(dj.Computed):
+        definition = """
+        -> ScanData # Forigen Key Reference
+        ---
+        processed_scan_data : longblob
+        """
+        
+        def make(self, key):
+            """
+            Function that computes processed_scan_data which is 2 * scan data from the ScanData Table
+            
+            Args:
+                key(dict) : dictionary that contains the primary key of ScanData to do computation on
+            
+            Returns:
+                None
+            """
+            
+            scan_data_dict = (ScanData & key).fetch1()
+            key['processed_scan_data'] = scan_data_dict['scan_data'] * 2
+            
+            self.insert1(key) 
+            
+    ScanData.insert1(dict(scan_id=5, scan_data=np.ones(5)))
+    ProcessedScanData.populate(reserved_jobs=True) # Only change that is needed
+
+In short the basic work flow is of the populate function call with reserved_jobs=True is 
+
+- Find out what tuples need to me populate by querying the key_source of the current compute table and removing the tuples that already been completed or is currently reserved by a another populate instance
+
+- Get one of the tuples that needs to be populate and tell the database to reserve it, thus marking it as reserved in the schema.jobs table
+
+- Upon completion of the computation, remove the tuple from the schema.jobs table.
+
+To access the schema.jobs tables simply have the schema define somewhere and query the table
+
+.. code-block:: python
+    :linenos:
+
+    import datajoint as dj
+    import numpy as np
+
+    schema = dj.schema('synicix_datajoint_tutorial')
+
+    schema.jobs
+
+
+There are times where a bug slips through and causes run times errors, creating a nightmare to debug espically when running mutiple instances.
+In order to assist with the debugging process, datajoint populate function logs every errored instances into the schema.jobs table, though it won't log the full stack trace,
+it does log the last message. **Just note that if the tuple is logged as an errored tuple populate attempt in the schema.jobs table, it won't populate that tuple until it is deleted manually.**
 
 Other Resources:
 ----------------
