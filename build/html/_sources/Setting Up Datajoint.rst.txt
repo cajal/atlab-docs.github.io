@@ -1,5 +1,0 @@
-=========
-Datajoint Setup
-=========
-
-Setting up Datajoint

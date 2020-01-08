@@ -188,3 +188,6 @@ extensions = [
 ]
 
 html_theme = "sphinx_rtd_theme"
+
+# to remove static path warning
+html_static_path = []
