@@ -511,7 +511,12 @@ there exists only one value per parameter for each condition.
 hashes where each hash corresponds to each stimulus type for a given parameter.
 One can see what condition table looks like by prompting `stimulus.Condition`:
 
-insert Condition table figure
+.. image:: images/stimulus_condition.jpg
+    :height: 200px
+    :width: 400px
+    :scale: 100%
+    :align: center
+
 
 Now remember we talked about dots and astericks when we ran an existing
 stimulus? Those prompts are printed out from this particular line. It looks at
@@ -529,9 +534,13 @@ and displayed.
 Configuration Examples
 ----------------------
 
+Here, we have a list of configuration with explanation. Please contribute to
+this page so that every stimulus we present is explained in details.
+
 imagenet_v2
 ^^^^^^^^^^^
-
+TODO
+Assigned to Donnie Kim
 
 Other Resources:
 ----------------
