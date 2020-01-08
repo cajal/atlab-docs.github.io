@@ -529,9 +529,13 @@ and displayed.
 Configuration Examples
 ----------------------
 
+Here, we have a list of configuration with explanation. Please contribute to
+this page so that every stimulus we present is explained in details.
+
 imagenet_v2
 ^^^^^^^^^^^
-
+TODO
+Assigned to Donnie Kim
 
 Other Resources:
 ----------------
