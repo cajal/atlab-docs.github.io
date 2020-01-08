@@ -1,0 +1,9 @@
+==========
+Kubernetes
+==========
+
+Prerequisites
+-------------
+
+ - Datajoint
+ - Docker
