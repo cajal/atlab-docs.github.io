@@ -129,7 +129,7 @@ Stimulus Repository Structure
 The structure of Stimulus repository can be confusing for new users and needs
 to be explained. The basic structure can be broken down as the following tree:
 
-.. code-block:: python
+.. code-block::
     
     stimuli
     ├── python
@@ -292,7 +292,8 @@ First off, let's start with the table defintion
 
 .. code-block:: MATLAB
     :linenos:
-    :name: single_dot_table_def
+    :caption: single-dot-table-def
+    :name: single-dot-table-def
 
     %{
     # single dot to map receptive field
@@ -428,7 +429,7 @@ In line 10, we defined a variable "command" with 2 mappings:
 If `rect`, then its value is `FillRect`. If `oval`, then`FillOval`.
 In line 11, we finally make our dot. But look at the first argument,
 `command.(cond.dot_shape)`. `cond` has `dot_shape` value and it can either be
-`rect` or `oval` according to our :numref:`single_dot_table_def`.
+`rect` or `oval` according to our :ref:`single-dot-table-def`.
 Then, our first argument becomes `command.rect` which value is `FillRect` or
 `command.oval` which value is `FillOval`.
 These `FillXXXX` then are commands that are understood by PsychToolbox.
@@ -501,7 +502,7 @@ to clear out possible trial queues and cached conditions. It is highly
 recommdned to perform these two lines when designing a new stimulus.
 
 **In line 5**, now we specify what we want for parameters that are defined in
-our :numref:`single_dot_table_def`.
+our :ref:`single-dot-table-def`.
 
 **In line 18**, we then factorize our conditions. Before the factorization,
 condition has `dox_x` and `dot_y` values an array. By doing factorization,
