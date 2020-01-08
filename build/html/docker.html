@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Docker &mdash; atlab-docs 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Kubernetes" href="kubernetes.html" />
+    <link rel="prev" title="DataJoint" href="datajoint.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> atlab-docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-use-docker">Why Use Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-docker">Installing Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-terminology">Docker Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-a-dockerfile">Writing a DockerFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-dockerfile">Building a DockerFile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">atlab-docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Docker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/docker.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="docker">
+<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="why-use-docker">
+<h2>Why Use Docker<a class="headerlink" href="#why-use-docker" title="Permalink to this headline">¶</a></h2>
+<p>Often times a code packages has various unique dependencies that it requires to operate. If it was
+just one or two code packages then it wouldn’t be a much a problem, but typically orginizations have hundreds of different code packages, all with their own specific requirements.</p>
+<p>Naturally the questions arises, how can I run my code without screwing over someone else stuff on a machine that is not mine, like a shared a server.</p>
+<p>The solution for this in the old days was to run a virtual machine that provided an virtual enviorment for each code package to run it, allowing it not to effect anything on the host systems
+or fellow virutal machine instances. This however, has one glaring issue which is that the emulation of hardware done by virtual machines tends to be very expensive and not scable in the long run.</p>
+<p>Docker solves this problem by only emulation what is needed, AKA the software packages and etc. and not the entire system like with virtual machines, thus making it a lot cheaper to run.</p>
+</div>
+<div class="section" id="installing-docker">
+<h2>Installing Docker<a class="headerlink" href="#installing-docker" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p>
+</div>
+<div class="section" id="docker-terminology">
+<h2>Docker Terminology<a class="headerlink" href="#docker-terminology" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Container: A self-containe enviorment for the user application to run in.</li>
+<li>DockerFile: An instruction file on how to build Docker Image</li>
+<li>DockerImage: A built copy of the Docker container, tend to be uploaded to DockerHub and downloaded to run stuff. Could also be used as a base for a new docker file</li>
+<li>DockerImage Tag: This is a name for the docker image, typically define during the build command, and is used to uniquely identify an image when uploaded to DockerHub</li>
+<li>DockerHub: A free docker image repository that allows users to host 1 free private image, and unlimited public images.</li>
+</ul>
+</div>
+<div class="section" id="writing-a-dockerfile">
+<h2>Writing a DockerFile<a class="headerlink" href="#writing-a-dockerfile" title="Permalink to this headline">¶</a></h2>
+<p>Typically one never really write a docker file from scratch, instead we select a base docker image to build off, then add commands additional libaries that we need.
+The commands typically used are very similar if not the same we for the Linux base system.</p>
+<p><strong>Note: Due to the fact that we use Kuberenetes along with docker, the general recommendation is to build the docker file with only public libaries. All private code will be handle at run time via Kuberenetes.</strong></p>
+<div class="highlight-DockerFile"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">FROM</span> <span class="s">nvidia/cuda:10.0-runtime-ubuntu18.04</span> <span class="c"># Base Ubuntu Docker Image that we are building off of</span>
+<span class="k">LABEL</span> <span class="nv">maintainer</span><span class="o">=</span><span class="s2">&quot;Synicix&quot;</span>
+
+<span class="c"># Ubuntu OS Requirements</span>
+<span class="k">RUN</span> apt-get -y update
+<span class="k">RUN</span> apt-get install python3-pip -y
+<span class="k">RUN</span> python3 -m pip install --upgrade pip
+<span class="k">RUN</span> apt-get -y install git
+
+<span class="c"># OpenCV2 dependencies</span>
+<span class="k">RUN</span> apt-get install -y libsm6 libxext6 libxrender-dev
+
+<span class="c"># Install python dependices</span>
+<span class="k">RUN</span> pip3 install h5py opencv-python seaborn pandas scipy imageio imageio-ffmpeg datajoint
+
+<span class="c"># Pytorch</span>
+<span class="k">RUN</span> pip3 install torch torchvision
+
+<span class="c"># Apex FP16 pytorch libaray</span>
+<span class="k">RUN</span> pip3 install git+https://www.github.com/nvidia/apex
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="building-a-dockerfile">
+<h2>Building a DockerFile<a class="headerlink" href="#building-a-dockerfile" title="Permalink to this headline">¶</a></h2>
+<p>To build a DockerFile:</p>
+<ul class="simple">
+<li>make sure the file is name DockerFile</li>
+<li>cd to the directory containing</li>
+<li>run docker build command with the approrate tag:</li>
+</ul>
+<p><strong>(In this case my &lt;dockerhub username&gt;/&lt;image-tag-name&gt;)</strong></p>
+<div class="highlight-DockerFile"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>docker build . -t synicix/pytorch-fp16-base
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kubernetes.html" class="btn btn-neutral float-right" title="Kubernetes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="datajoint.html" class="btn btn-neutral float-left" title="DataJoint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Synicix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

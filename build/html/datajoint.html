@@ -106,6 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#dj-manual">dj.Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-computed">dj.Computed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#querying-tables">Querying Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#datajoint-parallelizing-dj-computed-populate">DataJoint Parallelizing dj.Computed Populate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-resources">Other Resources:</a></li>
 </ul>
 </li>
@@ -217,7 +218,7 @@ In Docker this is done by setting the enviorment variables which datajoint will 
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
 
 <span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;database.host&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;at-database1.ad.bcm.edu&#39;</span> <span class="c1"># This the database server, yes you must VPN into Baylor</span>
 <span class="n">dj</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;database.username&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;yourusername&#39;</span> <span class="c1"># Provided when you setup an account with Daniel</span>
@@ -256,7 +257,7 @@ tables which can only be access via that schema.</p>
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
 
 <span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span> <span class="c1"># This is how you set the schema</span>
 
@@ -293,7 +294,7 @@ Details on the datatypes can be found in the next section.</p>
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
 
 <span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span> <span class="c1"># This is how you set the schema</span>
 
@@ -367,7 +368,7 @@ addition of requirement of telling datajoint where the external storage is locat
 <span class="s2">    scan_data : external-storage</span>
 <span class="s2">    &quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">scan_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">500</span><span class="p">))))</span> <span class="c1"># works just like longblob</span>
 </pre></div>
 </td></tr></table></div>
@@ -506,8 +507,8 @@ telling each instance what key they should do their computation on so that there
 38
 39
 40
-41</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+41</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
 
@@ -592,8 +593,8 @@ Take a look at the examples below:</p>
 36
 37
 38
-39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="kn">as</span> <span class="nn">dj</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
 
@@ -617,7 +618,7 @@ Take a look at the examples below:</p>
 <span class="n">ScanData</span><span class="p">()</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
 
 <span class="c1"># Get all the tuples as a list of dict</span>
-<span class="n">ScanData</span><span class="p">()</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">as_dict</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ScanData</span><span class="p">()</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">as_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Restricting ScanData tuples by the condition where scan_id == 5 with restriction by a dict</span>
 <span class="n">ScanData</span><span class="p">()</span> <span class="o">&amp;</span> <span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -633,6 +634,114 @@ Take a look at the examples below:</p>
 <span class="n">ScanData</span><span class="p">()</span> <span class="o">&amp;</span> <span class="s1">&#39;scan_id &lt; 5&#39;</span>
 </pre></div>
 </td></tr></table></div>
+</div>
+<div class="section" id="datajoint-parallelizing-dj-computed-populate">
+<h2>DataJoint Parallelizing dj.Computed Populate<a class="headerlink" href="#datajoint-parallelizing-dj-computed-populate" title="Permalink to this headline">¶</a></h2>
+<p>Often times there is a need to parallelize the population of a dj.Computed table, such as when each tuple takes considerable amount of time to compute.
+DataJoint offers a solution with this something call a jobs table which is tied to the schema that the dj.Computed table is under.</p>
+<p>To use it all we need to add an argument call reserved_jobs=True when we call .populate() function for a computed table. i.e.</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
+
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">ScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    scan_id : int unsigned</span>
+<span class="s2">    ---</span>
+<span class="s2">    scan_data : longblob</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+<span class="nd">@schema</span>
+<span class="k">class</span> <span class="nc">ProcessedScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Computed</span><span class="p">):</span>
+    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    -&gt; ScanData # Forigen Key Reference</span>
+<span class="s2">    ---</span>
+<span class="s2">    processed_scan_data : longblob</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">make</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Function that computes processed_scan_data which is 2 * scan data from the ScanData Table</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            key(dict) : dictionary that contains the primary key of ScanData to do computation on</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">scan_data_dict</span> <span class="o">=</span> <span class="p">(</span><span class="n">ScanData</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">fetch1</span><span class="p">()</span>
+        <span class="n">key</span><span class="p">[</span><span class="s1">&#39;processed_scan_data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scan_data_dict</span><span class="p">[</span><span class="s1">&#39;scan_data&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scan_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
+<span class="n">ProcessedScanData</span><span class="o">.</span><span class="n">populate</span><span class="p">(</span><span class="n">reserved_jobs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Only change that is needed</span>
+</pre></div>
+</td></tr></table></div>
+<p>In short the basic work flow is of the populate function call with reserved_jobs=True is</p>
+<ul class="simple">
+<li>Find out what tuples need to me populate by querying the key_source of the current compute table and removing the tuples that already been completed or is currently reserved by a another populate instance</li>
+<li>Get one of the tuples that needs to be populate and tell the database to reserve it, thus marking it as reserved in the schema.jobs table</li>
+<li>Upon completion of the computation, remove the tuple from the schema.jobs table.</li>
+</ul>
+<p>To access the schema.jobs tables simply have the schema define somewhere and query the table</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
+
+<span class="n">schema</span><span class="o">.</span><span class="n">jobs</span>
+</pre></div>
+</td></tr></table></div>
+<p>There are times where a bug slips through and causes run times errors, creating a nightmare to debug espically when running mutiple instances.
+In order to assist with the debugging process, datajoint populate function logs every errored instances into the schema.jobs table, though it won’t log the full stack trace,
+it does log the last message. <strong>Just note that if the tuple is logged as an errored tuple populate attempt in the schema.jobs table, it won’t populate that tuple until it is deleted manually.</strong></p>
 </div>
 <div class="section" id="other-resources">
 <h2>Other Resources:<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h2>

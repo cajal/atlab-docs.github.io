@@ -9,8 +9,10 @@ Welcome to atlab-docs's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   
    datajoint
+   docker
+   kubernetes
 
 
 Indices and tables
