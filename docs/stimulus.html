@@ -289,6 +289,44 @@ Or to queue a new set of trials, run the configuration script again.</p>
 <h2>Stimulus Repository Structure<a class="headerlink" href="#stimulus-repository-structure" title="Permalink to this headline">¶</a></h2>
 <p>The structure of Stimulus repository can be confusing for new users and needs
 to be explained. The basic structure can be broken down as the following tree:</p>
+<div class="highlight-MATLAB"><div class="highlight"><pre><span></span><span class="n">stimuli</span>
+<span class="s">├── python</span><span class="p"></span>
+└── <span class="n">matlab</span>
+  ├── <span class="o">+</span><span class="n">xtimulus</span>
+  ├── <span class="o">+</span><span class="n">imagenet</span>
+  ├── <span class="o">+</span><span class="n">netflix</span>
+  ├── <span class="n">conf</span>
+  <span class="o">|</span>     ├── <span class="n">singledot</span><span class="p">.</span><span class="n">m</span>
+  <span class="o">|</span>     ├── <span class="n">matisse</span><span class="p">.</span><span class="n">m</span>
+  <span class="o">|</span>     ├── <span class="n">grating</span><span class="p">.</span><span class="n">m</span>
+  <span class="o">|</span>     <span class="p">.</span>
+  <span class="o">|</span>     <span class="p">.</span>
+  <span class="o">|</span>     <span class="p">.</span>
+  └─── <span class="o">+</span><span class="n">stimulus</span>
+    ├── <span class="o">+</span><span class="n">conf</span>
+    <span class="o">|</span>     ├── <span class="n">singledot</span><span class="p">.</span><span class="n">m</span>
+    <span class="o">|</span>     ├── <span class="n">matisse</span><span class="p">.</span><span class="n">m</span>
+    <span class="o">|</span>     ├── <span class="n">grating</span><span class="p">.</span><span class="n">m</span>
+    <span class="o">|</span>     <span class="p">.</span>
+    <span class="o">|</span>     <span class="p">.</span>
+    <span class="o">|</span>     <span class="p">.</span>
+    ├── <span class="o">+</span><span class="n">core</span>
+    <span class="o">|</span>      ├ <span class="n">Control</span><span class="p">.</span><span class="n">m</span>
+    <span class="o">|</span>      ├ <span class="n">FIFO</span><span class="p">.</span><span class="n">m</span>
+    <span class="o">|</span>      ├ <span class="n">Screen</span><span class="p">.</span><span class="n">m</span>
+    <span class="o">|</span>      └ <span class="n">Visual</span><span class="p">.</span><span class="n">m</span>
+    ├── <span class="o">+</span><span class="n">utils</span>
+    <span class="o">|</span>      ├ <span class="n">DataHash</span><span class="p">.</span><span class="n">m</span>
+    <span class="o">|</span>      ├ <span class="n">factorize</span><span class="p">.</span><span class="n">m</span>
+    <span class="o">|</span>      └ <span class="n">license</span><span class="p">.</span><span class="n">txt</span>
+    ├── <span class="n">SingleDot</span><span class="p">.</span><span class="n">m</span>
+    ├── <span class="n">Matisse</span><span class="p">.</span><span class="n">m</span>
+    ├── <span class="n">Grating</span><span class="p">.</span><span class="n">m</span>
+    <span class="p">.</span>
+    <span class="p">.</span>
+    <span class="p">.</span>
+</pre></div>
+</div>
 <p>We will only focus <cite>matlab</cite> folder.</p>
 <p>Under <cite>matlab</cite> we have folders with <cite>+</cite> sign prepended. For MATLAB, <cite>+</cite> has a
 special meaning and it recognizes as a class folder.

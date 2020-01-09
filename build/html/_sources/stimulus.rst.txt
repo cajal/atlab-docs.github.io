@@ -2,7 +2,6 @@
 Stimulus
 ========
 
-
 Overview
 --------
 
@@ -129,7 +128,7 @@ Stimulus Repository Structure
 The structure of Stimulus repository can be confusing for new users and needs
 to be explained. The basic structure can be broken down as the following tree:
 
-.. code-block::
+.. code-block:: MATLAB
     
     stimuli
     ├── python

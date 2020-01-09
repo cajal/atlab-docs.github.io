@@ -193,6 +193,13 @@ addition of requirement of telling datajoint where the external storage is locat
     import numpy as np
     ScanData.insert1(dict(scan_id = 1, scan_data = np.ones(shape=(500,500)))) # works just like longblob
 
+Migrating External Storage from v0.11 to v0.12
+----------------------------------------------
+Due to internal changes, External Storage from v0.12 and are no longer compatible with v0.11 and below.
+Here are the instructions on how to do the migration: 
+
+https://docs.datajoint.io/python/admin/5-blob-config.html?highlight=migrating#migration-between-datajoint-v0-11-and-v0-12
+
 dj.Manual
 ---------
 
