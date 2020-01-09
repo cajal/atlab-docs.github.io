@@ -39,7 +39,8 @@ extensions = ['sphinx.ext.autodoc',
     'sphinx.ext.imgmath',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages']
+    'sphinx.ext.githubpages',
+    "sphinx_rtd_theme"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -182,11 +183,6 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 # Adding theme to docs
 import sphinx_rtd_theme
-
-extensions = [
-    "sphinx_rtd_theme"
-]
-
 html_theme = "sphinx_rtd_theme"
 
 # to remove static path warning
