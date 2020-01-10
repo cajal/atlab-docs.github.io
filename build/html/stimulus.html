@@ -289,6 +289,44 @@ Or to queue a new set of trials, run the configuration script again.</p>
 <h2>Stimulus Repository Structure<a class="headerlink" href="#stimulus-repository-structure" title="Permalink to this headline">¶</a></h2>
 <p>The structure of Stimulus repository can be confusing for new users and needs
 to be explained. The basic structure can be broken down as the following tree:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">stimuli</span>
+<span class="na">├── python</span>
+<span class="na">└── matlab</span>
+  <span class="na">├── +xtimulus</span>
+  <span class="na">├── +imagenet</span>
+  <span class="na">├── +netflix</span>
+  <span class="na">├── conf</span>
+  <span class="na">|     ├── singledot.m</span>
+  <span class="na">|     ├── matisse.m</span>
+  <span class="na">|     ├── grating.m</span>
+  <span class="na">|     .</span>
+  <span class="na">|     .</span>
+  <span class="na">|     .</span>
+  <span class="na">└─── +stimulus</span>
+    <span class="na">├── +conf</span>
+    <span class="na">|     ├── singledot.m</span>
+    <span class="na">|     ├── matisse.m</span>
+    <span class="na">|     ├── grating.m</span>
+    <span class="na">|     .</span>
+    <span class="na">|     .</span>
+    <span class="na">|     .</span>
+    <span class="na">├── +core</span>
+    <span class="na">|      ├ Control.m</span>
+    <span class="na">|      ├ FIFO.m</span>
+    <span class="na">|      ├ Screen.m</span>
+    <span class="na">|      └ Visual.m</span>
+    <span class="na">├── +utils</span>
+    <span class="na">|      ├ DataHash.m</span>
+    <span class="na">|      ├ factorize.m</span>
+    <span class="na">|      └ license.txt</span>
+    <span class="na">├── SingleDot.m</span>
+    <span class="na">├── Matisse.m</span>
+    <span class="na">├── Grating.m</span>
+    <span class="na">.</span>
+    <span class="na">.</span>
+    <span class="na">.</span>
+</pre></div>
+</div>
 <p>We will only focus <cite>matlab</cite> folder.</p>
 <p>Under <cite>matlab</cite> we have folders with <cite>+</cite> sign prepended. For MATLAB, <cite>+</cite> has a
 special meaning and it recognizes as a class folder.
@@ -342,7 +380,7 @@ both <cite>matlab/conf</cite> and <cite>matlab/+stimulus/+conf</cite> once final
 <p>Often times, one doesn’t probably need to design a new stimulus presentation
 but simply modify the configuration file.</p>
 <p>Here, we demonstrate a demo of designing a <cite>single dot</cite> stimulus</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="_images/single_dot.gif"><img alt="_images/single_dot.gif" src="_images/single_dot.gif" style="width: 274.5px; height: 158.5px;" /></a>
 <p class="caption"><span class="caption-text">single dot stimulus demo</span></p>
 </div>
