@@ -78,7 +78,7 @@ To build a DockerFile:
 - cd to the directory containing
 - run docker build command with the approrate tag: 
 
-**(In this case my <dockerhub username>/<image-tag-name>)**
+**(In this case <dockerhub username>/<image-tag-name>)**
 
 .. code-block:: DockerFile
     :linenos:
@@ -92,17 +92,22 @@ After building the docker image, we need to uploaded to DockerHub so it will be 
 
 To do so, we must first make sure that we are logged in on the docker machine that built the image via:
 
-Building a DockerFile
----------------------
-To build a DockerFile:
+.. code-block:: DockerFile
+    :linenos:
 
-- make sure the file is name DockerFile
-- cd to the directory containing
-- run docker build command with the approrate tag: 
+    docker login
 
-**(In this case my <dockerhub username>/<image-tag-name>)**
+Once we confirm that we have logged in successfully, the next step is to push our build image into DockerHub by running the following command with the correct image tag name:
 
 .. code-block:: DockerFile
     :linenos:
 
-    docker build . -t synicix/pytorch-fp16-base
+    docker push synicix/pytorch-fp16-base
+
+After image is pushed successfully, it should show up on DockerHub under your account like as such:
+
+.. image:: images/docker_hub_image_example.png
+    :align: center
+
+This means now the image is avaliable publically and any computer with a connection to DockerHub can download the image an launch it,
+which is intergral part for deploying jobs to Kuberenetes.

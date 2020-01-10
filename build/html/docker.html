@@ -104,7 +104,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#writing-a-dockerfile">Writing a DockerFile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#building-a-dockerfile">Building a DockerFile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#uploading-the-built-docker-image-to-dockerhub">Uploading the Built Docker Image to DockerHub</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Building a DockerFile</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
@@ -261,7 +260,7 @@ The commands typically used are very similar if not the same we for the Linux ba
 <li>cd to the directory containing</li>
 <li>run docker build command with the approrate tag:</li>
 </ul>
-<p><strong>(In this case my &lt;dockerhub username&gt;/&lt;image-tag-name&gt;)</strong></p>
+<p><strong>(In this case &lt;dockerhub username&gt;/&lt;image-tag-name&gt;)</strong></p>
 <div class="highlight-DockerFile"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>docker build . -t synicix/pytorch-fp16-base
 </pre></div>
 </td></tr></table></div>
@@ -270,19 +269,17 @@ The commands typically used are very similar if not the same we for the Linux ba
 <h2>Uploading the Built Docker Image to DockerHub<a class="headerlink" href="#uploading-the-built-docker-image-to-dockerhub" title="Permalink to this headline">¶</a></h2>
 <p>After building the docker image, we need to uploaded to DockerHub so it will be avaliable to any computer that has a connection to DockerHub (Currently the image is only the machine that built it)</p>
 <p>To do so, we must first make sure that we are logged in on the docker machine that built the image via:</p>
-</div>
-<div class="section" id="id1">
-<h2>Building a DockerFile<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>To build a DockerFile:</p>
-<ul class="simple">
-<li>make sure the file is name DockerFile</li>
-<li>cd to the directory containing</li>
-<li>run docker build command with the approrate tag:</li>
-</ul>
-<p><strong>(In this case my &lt;dockerhub username&gt;/&lt;image-tag-name&gt;)</strong></p>
-<div class="highlight-DockerFile"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>docker build . -t synicix/pytorch-fp16-base
+<div class="highlight-DockerFile"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>docker login
 </pre></div>
 </td></tr></table></div>
+<p>Once we confirm that we have logged in successfully, the next step is to push our build image into DockerHub by running the following command with the correct image tag name:</p>
+<div class="highlight-DockerFile"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span>docker push synicix/pytorch-fp16-base
+</pre></div>
+</td></tr></table></div>
+<p>After image is pushed successfully, it should show up on DockerHub under your account like as such:</p>
+<img alt="_images/docker_hub_image_example.png" class="align-center" src="_images/docker_hub_image_example.png" />
+<p>This means now the image is avaliable publically and any computer with a connection to DockerHub can download the image an launch it,
+which is intergral part for deploying jobs to Kuberenetes.</p>
 </div>
 </div>
 
