@@ -104,6 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#table-definition">Table Definition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#data-types">Data Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#external-storage">External Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#migrating-external-storage-from-v0-11-to-v0-12">Migrating External Storage from v0.11 to v0.12</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-manual">dj.Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-computed">dj.Computed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#querying-tables">Querying Tables</a></li>
@@ -376,6 +377,12 @@ addition of requirement of telling datajoint where the external storage is locat
 <span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">scan_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span><span class="mi">500</span><span class="p">))))</span> <span class="c1"># works just like longblob</span>
 </pre></div>
 </td></tr></table></div>
+</div>
+<div class="section" id="migrating-external-storage-from-v0-11-to-v0-12">
+<h2>Migrating External Storage from v0.11 to v0.12<a class="headerlink" href="#migrating-external-storage-from-v0-11-to-v0-12" title="Permalink to this headline">¶</a></h2>
+<p>Due to internal changes, External Storage from v0.12 and are no longer compatible with v0.11 and below.
+Here are the instructions on how to do the migration:</p>
+<p><a class="reference external" href="https://docs.datajoint.io/python/admin/5-blob-config.html?highlight=migrating#migration-between-datajoint-v0-11-and-v0-12">https://docs.datajoint.io/python/admin/5-blob-config.html?highlight=migrating#migration-between-datajoint-v0-11-and-v0-12</a></p>
 </div>
 <div class="section" id="dj-manual">
 <h2>dj.Manual<a class="headerlink" href="#dj-manual" title="Permalink to this headline">¶</a></h2>
