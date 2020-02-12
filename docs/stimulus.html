@@ -20,20 +20,11 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -44,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Kubernetes" href="kubernetes.html" /> 
+    <link rel="prev" title="DataJoint" href="datajoint.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,8 +86,6 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Stimulus</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#monitor-requirements">Monitor Requirements</a></li>
@@ -217,14 +206,14 @@ is simply checking <strong>Nvidia X Server Settings</strong></p>
 must be <em>known</em> to MATLAB environment.</p>
 <p><span class="raw-html"><font color="red"><strong>MATLAB (MUST BE R2016b or above)</strong></font></span></p>
 <ul class="simple">
-<li><a class="reference external" href="http://psychtoolbox.org/download.html#installation">PsychToolbox</a> : Stimulus package uses PsychToolbox as a backend</li>
-<li><a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/63218-datajoint">datajoint</a> : It is best to simply install via <em>Add On</em> on MATLAB console</li>
+<li><p><a class="reference external" href="http://psychtoolbox.org/download.html#installation">PsychToolbox</a> : Stimulus package uses PsychToolbox as a backend</p></li>
+<li><p><a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/63218-datajoint">datajoint</a> : It is best to simply install via <em>Add On</em> on MATLAB console</p></li>
 </ul>
 <p>Following packages must be cloned and added to <em>PATH</em> of the MATLAB</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/datajoint/mym.git">mym</a> : datajoint extension to recognize data type <em>BLOB</em></li>
-<li><a class="reference external" href="https://github.com/cajal/pipeline.git">pipeline</a> : need to be able to access <em>experiment</em> module</li>
-<li><a class="reference external" href="https://github.com/cajal/stimuli.git">stimulus</a> : stimulus package itself</li>
+<li><p><a class="reference external" href="https://github.com/datajoint/mym.git">mym</a> : datajoint extension to recognize data type <em>BLOB</em></p></li>
+<li><p><a class="reference external" href="https://github.com/cajal/pipeline.git">pipeline</a> : need to be able to access <em>experiment</em> module</p></li>
+<li><p><a class="reference external" href="https://github.com/cajal/stimuli.git">stimulus</a> : stimulus package itself</p></li>
 </ul>
 <p>In order to add these packages to <strong>PATH</strong>, click <strong>Set Path</strong> on MATLAB
 console and <strong>Add with Subfolders</strong>. See image below for what needs to be added</p>
@@ -239,7 +228,7 @@ computer. Note, when you actually run the experiment, you will do it through
 generate your own stimulus and need to debug/troubleshoot.</p>
 <div class="section" id="step-1-initialize-screen">
 <h3>Step 1: Initialize screen<a class="headerlink" href="#step-1-initialize-screen" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">open</span>
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">open</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -248,7 +237,7 @@ generate your own stimulus and need to debug/troubleshoot.</p>
 <p>Stimulus trials are generated and queued by the scripts in the +stimulus/+conf
 directory. You need to know which configuration script needs to be run.</p>
 <p>For example, to prepare the <strong>singledot</strong> stimulus, execute</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">singledot</span>
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">singledot</span>
 </pre></div>
 </td></tr></table></div>
 <p>While the stimulus is loaded, you will see a sequence of dots . and asterisks
@@ -264,7 +253,7 @@ will not take as long.</p>
 Table <cite>experiment.Scan</cite> contains a dummy entry that can be used for testing.
 Its primary key is <cite>struct(‘animal_id’, 0, ‘session’, 0, ‘scan_idx’, 0)</cite>.
 During the experiment, the correct scan identification must be provided.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;animal_id&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;session&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;scan_idx&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">false</span><span class="p">)</span>
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;animal_id&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;session&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;scan_idx&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">false</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 <p>Note, <em>false</em> is given so that we <em>do not log</em> our dummy entries to
@@ -280,7 +269,7 @@ Or to queue a new set of trials, run the configuration script again.</p>
 <div class="section" id="step-5-exit">
 <h3>Step 5. Exit<a class="headerlink" href="#step-5-exit" title="Permalink to this headline">¶</a></h3>
 <p>To close the stimulus program,</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">close</span>
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">close</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -289,42 +278,42 @@ Or to queue a new set of trials, run the configuration script again.</p>
 <h2>Stimulus Repository Structure<a class="headerlink" href="#stimulus-repository-structure" title="Permalink to this headline">¶</a></h2>
 <p>The structure of Stimulus repository can be confusing for new users and needs
 to be explained. The basic structure can be broken down as the following tree:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">stimuli</span>
-<span class="na">├── python</span>
-<span class="na">└── matlab</span>
-  <span class="na">├── +xtimulus</span>
-  <span class="na">├── +imagenet</span>
-  <span class="na">├── +netflix</span>
-  <span class="na">├── conf</span>
-  <span class="na">|     ├── singledot.m</span>
-  <span class="na">|     ├── matisse.m</span>
-  <span class="na">|     ├── grating.m</span>
-  <span class="na">|     .</span>
-  <span class="na">|     .</span>
-  <span class="na">|     .</span>
-  <span class="na">└─── +stimulus</span>
-    <span class="na">├── +conf</span>
-    <span class="na">|     ├── singledot.m</span>
-    <span class="na">|     ├── matisse.m</span>
-    <span class="na">|     ├── grating.m</span>
-    <span class="na">|     .</span>
-    <span class="na">|     .</span>
-    <span class="na">|     .</span>
-    <span class="na">├── +core</span>
-    <span class="na">|      ├ Control.m</span>
-    <span class="na">|      ├ FIFO.m</span>
-    <span class="na">|      ├ Screen.m</span>
-    <span class="na">|      └ Visual.m</span>
-    <span class="na">├── +utils</span>
-    <span class="na">|      ├ DataHash.m</span>
-    <span class="na">|      ├ factorize.m</span>
-    <span class="na">|      └ license.txt</span>
-    <span class="na">├── SingleDot.m</span>
-    <span class="na">├── Matisse.m</span>
-    <span class="na">├── Grating.m</span>
-    <span class="na">.</span>
-    <span class="na">.</span>
-    <span class="na">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>stimuli
+├── python
+└── matlab
+  ├── +xtimulus
+  ├── +imagenet
+  ├── +netflix
+  ├── conf
+  |     ├── singledot.m
+  |     ├── matisse.m
+  |     ├── grating.m
+  |     .
+  |     .
+  |     .
+  └─── +stimulus
+    ├── +conf
+    |     ├── singledot.m
+    |     ├── matisse.m
+    |     ├── grating.m
+    |     .
+    |     .
+    |     .
+    ├── +core
+    |      ├ Control.m
+    |      ├ FIFO.m
+    |      ├ Screen.m
+    |      └ Visual.m
+    ├── +utils
+    |      ├ DataHash.m
+    |      ├ factorize.m
+    |      └ license.txt
+    ├── SingleDot.m
+    ├── Matisse.m
+    ├── Grating.m
+    .
+    .
+    .
 </pre></div>
 </div>
 <p>We will only focus <cite>matlab</cite> folder.</p>
@@ -342,10 +331,10 @@ Inside <cite>+stimulus</cite>, we have <cite>+conf</cite>, <cite>+core</cite>, <
 files:</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>+conf</strong> : contains configuration files (singledot.m, mattise.m, etc) that specify parameters for some stimulus presentation</li>
-<li><strong>+core</strong> : controls and interacts with your display and Psychtoolbox. Most likely, you won’t have to change anything here. But if you need to update something, consult with either Saumil or Dimitri</li>
-<li><strong>+utils</strong> : some help functions. Not so important unless you can find a function to be called universally across different stimuli.</li>
-<li><strong>m files</strong> (SingleDot.m, Matisse.m, etc): Display m files that dictate how the stimulus should be displayed.</li>
+<li><p><strong>+conf</strong> : contains configuration files (singledot.m, mattise.m, etc) that specify parameters for some stimulus presentation</p></li>
+<li><p><strong>+core</strong> : controls and interacts with your display and Psychtoolbox. Most likely, you won’t have to change anything here. But if you need to update something, consult with either Saumil or Dimitri</p></li>
+<li><p><strong>+utils</strong> : some help functions. Not so important unless you can find a function to be called universally across different stimuli.</p></li>
+<li><p><strong>m files</strong> (SingleDot.m, Matisse.m, etc): Display m files that dictate how the stimulus should be displayed.</p></li>
 </ul>
 </div></blockquote>
 <p>Two important points here.</p>
@@ -374,20 +363,20 @@ both <cite>matlab/conf</cite> and <cite>matlab/+stimulus/+conf</cite> once final
 <h2>Designing a New Stimulus<a class="headerlink" href="#designing-a-new-stimulus" title="Permalink to this headline">¶</a></h2>
 <p>There are two parts in designing:</p>
 <ol class="arabic simple">
-<li>Stimulus Presentation - <cite>HOW</cite> the stimulus is displayed on the monitor/projector (e.g. SingleDot.m)</li>
-<li>Stimulus Configuration - <cite>PARAMETERS</cite> for the stimulus one designed. (e.g. singledot.m)</li>
+<li><p>Stimulus Presentation - <cite>HOW</cite> the stimulus is displayed on the monitor/projector (e.g. SingleDot.m)</p></li>
+<li><p>Stimulus Configuration - <cite>PARAMETERS</cite> for the stimulus one designed. (e.g. singledot.m)</p></li>
 </ol>
 <p>Often times, one doesn’t probably need to design a new stimulus presentation
 but simply modify the configuration file.</p>
 <p>Here, we demonstrate a demo of designing a <cite>single dot</cite> stimulus</p>
-<div class="figure align-center" id="id2">
+<div class="figure align-center" id="id3">
 <a class="reference internal image-reference" href="_images/single_dot.gif"><img alt="_images/single_dot.gif" src="_images/single_dot.gif" style="width: 274.5px; height: 158.5px;" /></a>
-<p class="caption"><span class="caption-text">single dot stimulus demo</span></p>
+<p class="caption"><span class="caption-text">single dot stimulus demo</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="stimulus-presentation">
 <h3>Stimulus Presentation<a class="headerlink" href="#stimulus-presentation" title="Permalink to this headline">¶</a></h3>
 <p>Below is the content of <a class="reference external" href="https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/SingleDot.m">SingleDot.m</a>.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -467,7 +456,7 @@ but simply modify the configuration file.</p>
 <p>First off, let’s start with the table defintion</p>
 <div class="literal-block-wrapper docutils container" id="single-dot-table-def">
 <div class="code-block-caption"><span class="caption-text">single-dot-table-def</span><a class="headerlink" href="#single-dot-table-def" title="Permalink to this code">¶</a></div>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -508,7 +497,7 @@ designing a table.</p>
 <div class="section" id="how-to-define-a-class">
 <h4>How to define a class<a class="headerlink" href="#how-to-define-a-class" title="Permalink to this headline">¶</a></h4>
 <p>Now let’s look at how the class is defined and what it inherits:</p>
-<div class="highlight-MATLAB"><div class="highlight"><pre><span></span><span class="k">classdef</span> <span class="n">SingleDot</span> <span class="o">&lt;</span> <span class="n">dj</span><span class="p">.</span><span class="n">Manual</span> <span class="o">&amp;</span> <span class="n">stimulus</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">Visual</span>
+<div class="highlight-MATLAB notranslate"><div class="highlight"><pre><span></span><span class="k">classdef</span> <span class="n">SingleDot</span> <span class="o">&lt;</span> <span class="n">dj</span><span class="p">.</span><span class="n">Manual</span> <span class="o">&amp;</span> <span class="n">stimulus</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">Visual</span>
 </pre></div>
 </div>
 <p>First, your class name must match with your filename (e.g. SingleDot). And it
@@ -525,7 +514,7 @@ is <cite>version</cite> (line 2). <cite>version</cite> is an abstract property i
 <a class="reference external" href="https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L11">Visual class</a>.</p>
 <p>As you update/modify your code in development, make sure that you version up
 (by whole number) as you go.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">properties</span><span class="p">(</span><span class="n">Constant</span><span class="p">)</span>
     <span class="n">version</span> <span class="p">=</span> <span class="s">&#39;2&#39;</span>
@@ -538,7 +527,7 @@ is <cite>version</cite> (line 2). <cite>version</cite> is an abstract property i
 <p>We can also set methods and <strong>`showTrial`</strong> is another abstract method
 inherited from <a class="reference external" href="https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L70">Visual</a>.
 In other words, you <strong>MUST</strong> declare it, otherwise it will throw an error.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -637,7 +626,7 @@ the syncing.</p>
 <div class="section" id="stimulus-configuration">
 <span id="stimulus-configuration-label"></span><h3>Stimulus Configuration<a class="headerlink" href="#stimulus-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Below is the content of <a class="reference external" href="https://github.com/DonnieKim411/stimuli/blob/master/matlab/%2Bstimulus/%2Bconf/singledot.m">singledot.m</a>.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -749,7 +738,7 @@ Assigned to Donnie Kim</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="kubernetes.html" class="btn btn-neutral float-left" title="Kubernetes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="datajoint.html" class="btn btn-neutral float-left" title="DataJoint" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -20,20 +20,11 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -44,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Docker" href="docker.html" />
+    <link rel="next" title="Stimulus" href="stimulus.html" />
     <link rel="prev" title="Welcome to atlab-docs’s documentation!" href="index.html" /> 
 </head>
 
@@ -104,16 +95,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#table-definition">Table Definition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#data-types">Data Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#external-storage">External Storage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#migrating-external-storage-from-v0-11-to-v0-12">Migrating External Storage from v0.11 to v0.12</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-manual">dj.Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dj-computed">dj.Computed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#querying-tables">Querying Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#datajoint-parallelizing-dj-computed-populate">DataJoint Parallelizing dj.Computed Populate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-resources">Other Resources:</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a></li>
 </ul>
 
@@ -186,7 +173,7 @@
 <p>Datajoint is a python package created by Vathes to allow eaiser access and data pipeline creation without directly interfacing with a SQL Database which would require learning SQL commands as well as how to use the connector to send those queries to the database.</p>
 <p>For example, let say we want to join two tables name table_1 and table_2 and get all the data from it:</p>
 <p>In (SQL) this is the query we have to write which then get fed through connector package:</p>
-<div class="highlight-SQL"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-SQL notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
 <span class="k">FROM</span> <span class="n">table_1</span>
@@ -194,7 +181,7 @@
 </pre></div>
 </td></tr></table></div>
 <p>On the other hand with DataJoint (python) all we need to do is write this line:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">table_1</span> <span class="o">*</span> <span class="n">table_2</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">table_1</span> <span class="o">*</span> <span class="n">table_2</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -202,11 +189,11 @@
 <h2>Installing DataJoint<a class="headerlink" href="#installing-datajoint" title="Permalink to this headline">¶</a></h2>
 <p>Datajoint can be installed via pip3 or via Anaconda</p>
 <p>pip3:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">datajoint</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="n">datajoint</span>
 </pre></div>
 </td></tr></table></div>
 <p>Anaconda:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">datajoint</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">datajoint</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -217,7 +204,7 @@ Datajoint will then use those credentials to login into the database and allow y
 <p>This is the basic setup of the login information for datajoint. This only needs to be run once per computer.
 In Docker this is done by setting the enviorment variables which datajoint will use (more details on K8 stuff)</p>
 <p>pip3:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -237,11 +224,11 @@ In Docker this is done by setting the enviorment variables which datajoint will 
 <h2>Overview of the Basics of DataJoint<a class="headerlink" href="#overview-of-the-basics-of-datajoint" title="Permalink to this headline">¶</a></h2>
 <p>DataJoint has several table classes that serves as the bases for all tables the user will need:</p>
 <ul class="simple">
-<li>dj.Manual</li>
-<li>dj.Computed</li>
-<li>dj.Lookup</li>
-<li>dj.Imported</li>
-<li>dj.Part</li>
+<li><p>dj.Manual</p></li>
+<li><p>dj.Computed</p></li>
+<li><p>dj.Lookup</p></li>
+<li><p>dj.Imported</p></li>
+<li><p>dj.Part</p></li>
 </ul>
 <p>We will mostly only focus on the dj.Manual, dj.Computed, and dj.Lookup</p>
 </div>
@@ -250,7 +237,7 @@ In Docker this is done by setting the enviorment variables which datajoint will 
 <p>Each table in the database belongs to something call a schema which is a logical representation of database. In short each schema has a collection of
 tables which can only be access via that schema.</p>
 <p>In datajoint, to select what schema the table should be place under, datajoint uses class decarators:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -287,7 +274,7 @@ attributes are what uniquely identify each tuple.</p>
 Every attributes that is define above “- - -” (line 10) is consider to be primary, while everything below is not.</p>
 <p>Each attributes the attribute name on the left followed by “:” then the datatype of the attribute.
 Details on the datatypes can be found in the next section.</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -321,25 +308,25 @@ Details on the datatypes can be found in the next section.</p>
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
 <p>These are the datatype that datajoint supports:</p>
 <ul class="simple">
-<li><strong>tinyint:</strong> an 8-bit integer number, ranging from -128 to 127.</li>
-<li><strong>tinyint unsigned:</strong> an 8-bit positive integer number, ranging from 0 to 255.</li>
-<li><strong>smallint:</strong> a 16-bit integer number, ranging from -32,768 to 32,767.</li>
-<li><strong>smallint unsigned:</strong> a 16-bit positive integer, ranging from 0 to 65,535.</li>
-<li><strong>int:</strong> a 32-bit integer number, ranging from -2,147,483,648 to 2,147,483,647.</li>
-<li><strong>int unsigned:</strong> a 32-bit positive integer, ranging from 0 to 4,294,967,295.</li>
-<li><strong>enum:</strong> one of several explicitly enumerated values specified as strings. Use this datatype instead of text strings to avoid spelling variations and to save storage space. For example, for anesthesia, the datatype could be enum(“urethane”, “isoflurane”, “fentanyl”). Do not use enums in primary keys due to the difficulty of changing their definitions consistently in multiple tables.</li>
-<li><strong>date:</strong> date as ‘YYYY-MM-DD’.</li>
-<li><strong>time:</strong> time as ‘HH:MM:SS’.</li>
-<li><strong>timestamp:</strong> Date and time to the second as ‘YYYY-MM-DD HH:MM:SS’. The default value may be set to CURRENT_TIMESTAMP.</li>
-<li><strong>char(N):</strong> a character string up to N characters (but always takes the entire N bytes to store).</li>
-<li><strong>varchar(N):</strong> a text string of arbitrary length up to N characters that takes N+1 or N+2 bytes of storage.</li>
-<li><strong>float:</strong> a single-precision floating-point number. Takes 4 bytes. Single precision is sufficient for many measurements.</li>
-<li><strong>double:</strong> a double-precision floating-point number. Takes 8 bytes. Because equality comparisons are error-prone, neither float nor double should be used in primary keys.</li>
-<li><strong>decimal(N,F):</strong> a fixed-point number with N total decimal digits and F fractional digits. This datatype is well suited to represent numbers whose magnitude is well defined and does not warrant the use of floating-point representation or requires precise decimal representations (e.g. dollars and cents). Because of its well-defined precision, decimal values can be used in equality comparison and be included in primary keys.</li>
-<li><strong>longblob:</strong> arbitrary MATLAB value (e.g. matrix, image, structure), up to 4 GiB in size. In Python, arbitrary numeric numpy array. Numeric arrays are compatible between MATLAB and Python.</li>
-<li><strong>decimal(N,F) unsigned:</strong> same as decimal, but limited to nonnegative values.</li>
-<li><strong>mediumint:</strong> a 24-bit integer number, ranging from -8,388,608 to 8,388,607.</li>
-<li><strong>mediumint unsigned:</strong> a 24-bit positive integer, ranging from 0 to 16,777,216.</li>
+<li><p><strong>tinyint:</strong> an 8-bit integer number, ranging from -128 to 127.</p></li>
+<li><p><strong>tinyint unsigned:</strong> an 8-bit positive integer number, ranging from 0 to 255.</p></li>
+<li><p><strong>smallint:</strong> a 16-bit integer number, ranging from -32,768 to 32,767.</p></li>
+<li><p><strong>smallint unsigned:</strong> a 16-bit positive integer, ranging from 0 to 65,535.</p></li>
+<li><p><strong>int:</strong> a 32-bit integer number, ranging from -2,147,483,648 to 2,147,483,647.</p></li>
+<li><p><strong>int unsigned:</strong> a 32-bit positive integer, ranging from 0 to 4,294,967,295.</p></li>
+<li><p><strong>enum:</strong> one of several explicitly enumerated values specified as strings. Use this datatype instead of text strings to avoid spelling variations and to save storage space. For example, for anesthesia, the datatype could be enum(“urethane”, “isoflurane”, “fentanyl”). Do not use enums in primary keys due to the difficulty of changing their definitions consistently in multiple tables.</p></li>
+<li><p><strong>date:</strong> date as ‘YYYY-MM-DD’.</p></li>
+<li><p><strong>time:</strong> time as ‘HH:MM:SS’.</p></li>
+<li><p><strong>timestamp:</strong> Date and time to the second as ‘YYYY-MM-DD HH:MM:SS’. The default value may be set to CURRENT_TIMESTAMP.</p></li>
+<li><p><strong>char(N):</strong> a character string up to N characters (but always takes the entire N bytes to store).</p></li>
+<li><p><strong>varchar(N):</strong> a text string of arbitrary length up to N characters that takes N+1 or N+2 bytes of storage.</p></li>
+<li><p><strong>float:</strong> a single-precision floating-point number. Takes 4 bytes. Single precision is sufficient for many measurements.</p></li>
+<li><p><strong>double:</strong> a double-precision floating-point number. Takes 8 bytes. Because equality comparisons are error-prone, neither float nor double should be used in primary keys.</p></li>
+<li><p><strong>decimal(N,F):</strong> a fixed-point number with N total decimal digits and F fractional digits. This datatype is well suited to represent numbers whose magnitude is well defined and does not warrant the use of floating-point representation or requires precise decimal representations (e.g. dollars and cents). Because of its well-defined precision, decimal values can be used in equality comparison and be included in primary keys.</p></li>
+<li><p><strong>longblob:</strong> arbitrary MATLAB value (e.g. matrix, image, structure), up to 4 GiB in size. In Python, arbitrary numeric numpy array. Numeric arrays are compatible between MATLAB and Python.</p></li>
+<li><p><strong>decimal(N,F) unsigned:</strong> same as decimal, but limited to nonnegative values.</p></li>
+<li><p><strong>mediumint:</strong> a 24-bit integer number, ranging from -8,388,608 to 8,388,607.</p></li>
+<li><p><strong>mediumint unsigned:</strong> a 24-bit positive integer, ranging from 0 to 16,777,216.</p></li>
 </ul>
 </div>
 <div class="section" id="external-storage">
@@ -350,7 +337,7 @@ to fetch the longblob, the database has to handle that which will bogged down th
 <p>External-storage is a datatype that datajoint provides that allow the storage of large numerical arrays to be stored on a external storage location like an network storage server instead of directly on the database server.
 This allows user to store massive amount of data without filling up the database, which will cause serveral problems down the line. In short it works exactly like longblob except with the
 addition of requirement of telling datajoint where the external storage is located.</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -378,17 +365,11 @@ addition of requirement of telling datajoint where the external storage is locat
 </pre></div>
 </td></tr></table></div>
 </div>
-<div class="section" id="migrating-external-storage-from-v0-11-to-v0-12">
-<h2>Migrating External Storage from v0.11 to v0.12<a class="headerlink" href="#migrating-external-storage-from-v0-11-to-v0-12" title="Permalink to this headline">¶</a></h2>
-<p>Due to internal changes, External Storage from v0.12 and are no longer compatible with v0.11 and below.
-Here are the instructions on how to do the migration:</p>
-<p><a class="reference external" href="https://docs.datajoint.io/python/admin/5-blob-config.html?highlight=migrating#migration-between-datajoint-v0-11-and-v0-12">https://docs.datajoint.io/python/admin/5-blob-config.html?highlight=migrating#migration-between-datajoint-v0-11-and-v0-12</a></p>
-</div>
 <div class="section" id="dj-manual">
 <h2>dj.Manual<a class="headerlink" href="#dj-manual" title="Permalink to this headline">¶</a></h2>
 <p>dj.Manual tables that require the manual insertion of tuples by the users, this doesn’t neccesearly mean fully manual as the user can right a method to do the insertion for them base on the provided parameteres.
 In our convention we often call this method fill. This is not a programmatic requirement, just the convention we use in the lab.</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -468,8 +449,8 @@ In our convention we often call this method fill. This is not a programmatic req
 will be instead computed from a pre-define function that the user wrote, hence the the name computed.</p>
 <p>There is two main distictions that a dj.computed tables has verses it dj.Manual counter part:</p>
 <ul class="simple">
-<li>Foreign Key Reference: Computed table tend to reference the primary attributes from another table where for each primary key serves as the input parameteres for the computation define by the user in the make function.</li>
-<li>make(self, key) function: This function is where the user defines his or her computation where the key being passed in forgien key reference or references define in the computed table definition.</li>
+<li><p>Foreign Key Reference: Computed table tend to reference the primary attributes from another table where for each primary key serves as the input parameteres for the computation define by the user in the make function.</p></li>
+<li><p>make(self, key) function: This function is where the user defines his or her computation where the key being passed in forgien key reference or references define in the computed table definition.</p></li>
 </ul>
 <p>These two work together to establish a computation data pipeline which is the main purpose of datajoint.
 For example, a typical pipeline might look something like this: Scan Data -&gt; Post-Scan Processing Comptuation -&gt; Processed Data for Data Analysis -&gt; etc.</p>
@@ -478,7 +459,7 @@ the populate function which is called to start the computation of each row. This
 Kubernetes cluster deployment where you can deploy like a 1000+ instances of the application where datajoint will handle
 telling each instance what key they should do their computation on so that there is no overlap.</p>
 <p>Here is an example dj.Computed table:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -566,7 +547,7 @@ telling each instance what key they should do their computation on so that there
 <h2>Querying Tables<a class="headerlink" href="#querying-tables" title="Permalink to this headline">¶</a></h2>
 <p>Getting data as well as applying simple restrictions on the tables is very simple with datajoint.
 Take a look at the examples below:</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -646,114 +627,6 @@ Take a look at the examples below:</p>
 </pre></div>
 </td></tr></table></div>
 </div>
-<div class="section" id="datajoint-parallelizing-dj-computed-populate">
-<h2>DataJoint Parallelizing dj.Computed Populate<a class="headerlink" href="#datajoint-parallelizing-dj-computed-populate" title="Permalink to this headline">¶</a></h2>
-<p>Often times there is a need to parallelize the population of a dj.Computed table, such as when each tuple takes considerable amount of time to compute.
-DataJoint offers a solution with this something call a jobs table which is tied to the schema that the dj.Computed table is under.</p>
-<p>To use it all we need to add an argument call reserved_jobs=True when we call .populate() function for a computed table. i.e.</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
-
-<span class="nd">@schema</span>
-<span class="k">class</span> <span class="nc">ScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Manual</span><span class="p">):</span>
-    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    scan_id : int unsigned</span>
-<span class="s2">    ---</span>
-<span class="s2">    scan_data : longblob</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-<span class="nd">@schema</span>
-<span class="k">class</span> <span class="nc">ProcessedScanData</span><span class="p">(</span><span class="n">dj</span><span class="o">.</span><span class="n">Computed</span><span class="p">):</span>
-    <span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    -&gt; ScanData # Forigen Key Reference</span>
-<span class="s2">    ---</span>
-<span class="s2">    processed_scan_data : longblob</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">make</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Function that computes processed_scan_data which is 2 * scan data from the ScanData Table</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            key(dict) : dictionary that contains the primary key of ScanData to do computation on</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">scan_data_dict</span> <span class="o">=</span> <span class="p">(</span><span class="n">ScanData</span> <span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">fetch1</span><span class="p">()</span>
-        <span class="n">key</span><span class="p">[</span><span class="s1">&#39;processed_scan_data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scan_data_dict</span><span class="p">[</span><span class="s1">&#39;scan_data&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-
-<span class="n">ScanData</span><span class="o">.</span><span class="n">insert1</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">scan_id</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scan_data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)))</span>
-<span class="n">ProcessedScanData</span><span class="o">.</span><span class="n">populate</span><span class="p">(</span><span class="n">reserved_jobs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Only change that is needed</span>
-</pre></div>
-</td></tr></table></div>
-<p>In short the basic work flow is of the populate function call with reserved_jobs=True is</p>
-<ul class="simple">
-<li>Find out what tuples need to me populate by querying the key_source of the current compute table and removing the tuples that already been completed or is currently reserved by a another populate instance</li>
-<li>Get one of the tuples that needs to be populate and tell the database to reserve it, thus marking it as reserved in the schema.jobs table</li>
-<li>Upon completion of the computation, remove the tuple from the schema.jobs table.</li>
-</ul>
-<p>To access the schema.jobs tables simply have the schema define somewhere and query the table</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datajoint</span> <span class="k">as</span> <span class="nn">dj</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">schema</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="s1">&#39;synicix_datajoint_tutorial&#39;</span><span class="p">)</span>
-
-<span class="n">schema</span><span class="o">.</span><span class="n">jobs</span>
-</pre></div>
-</td></tr></table></div>
-<p>There are times where a bug slips through and causes run times errors, creating a nightmare to debug espically when running mutiple instances.
-In order to assist with the debugging process, datajoint populate function logs every errored instances into the schema.jobs table, though it won’t log the full stack trace,
-it does log the last message. <strong>Just note that if the tuple is logged as an errored tuple populate attempt in the schema.jobs table, it won’t populate that tuple until it is deleted manually.</strong></p>
-</div>
 <div class="section" id="other-resources">
 <h2>Other Resources:<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
@@ -771,7 +644,7 @@ it does log the last message. <strong>Just note that if the tuple is logged as a
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="docker.html" class="btn btn-neutral float-right" title="Docker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="stimulus.html" class="btn btn-neutral float-right" title="Stimulus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to atlab-docs’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

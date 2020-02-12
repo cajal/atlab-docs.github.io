@@ -11,8 +11,6 @@ Welcome to atlab-docs's documentation!
    :caption: Contents:
 
    datajoint
-   docker
-   kubernetes
    stimulus
 
 

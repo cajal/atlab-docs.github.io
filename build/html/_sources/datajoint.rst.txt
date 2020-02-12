@@ -60,7 +60,7 @@ pip3:
     import datajoint as dj
 
     dj.config['database.host'] = 'at-database1.ad.bcm.edu' # This the database server, yes you must VPN into Baylor
-    dj.config['database.username'] = 'yourusername' # Provided when you setup an account with Daniel
+    dj.config['database.user'] = 'yourusername' # Provided when you setup an account with Daniel
     dj.config['database.password'] = 'NotMyRealPassword' # Provided when you setup an account with Daniel
 
     dj.config.save_global() # Save the information above on your machine so you don't have to do this again.
