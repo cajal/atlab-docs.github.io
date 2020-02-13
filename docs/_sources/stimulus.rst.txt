@@ -129,8 +129,8 @@ Stimulus Repository Structure
 The structure of Stimulus repository can be confusing for new users and needs
 to be explained. The basic structure can be broken down as the following tree:
 
-.. code-block::
-    
+.. code-block:: ini
+
     stimuli
     ├── python
     └── matlab
@@ -176,7 +176,7 @@ If you are familiar with Python, think `+foldername` as a `module.py`.
 Inside these `+foldername`, you have bunch of `m files` and you can think of
 them as `class` definitions in Python.
 If you need further help, you can refer to this
-`MATLAB documentation <https://www.mathworks.com/help/matlab/matlab_oop/organizing-classes-in-folders.html>`_.
+`MATLAB documentation <https://www.mathworks.com/help/matlab/matlab_oop/organizing-classes-in-folders.html>`__.
 
 For those who are not familiar with Python nor classes, just treat them as a
 special symbol for MATLAB to recognize that folder and m files underneath.
@@ -242,7 +242,7 @@ Here, we demonstrate a demo of designing a `single dot` stimulus
 Stimulus Presentation
 ^^^^^^^^^^^^^^^^^^^^^
 
-Below is the content of `SingleDot.m <https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/SingleDot.m>`_.
+Below is the content of `SingleDot.m <https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/SingleDot.m>`__.
 
 .. code-block:: MATLAB
     :linenos:
@@ -309,7 +309,7 @@ First off, let's start with the table defintion
     dot_time                    : float                         # (secs) time of each dot persists
     %}
 
-If you are not familiar with datajoint MATLAB, refer to this `documentation <https://docs.datajoint.io/matlab/>`_.
+If you are not familiar with datajoint MATLAB, refer to this `documentation <https://docs.datajoint.io/matlab/>`__.
 
 In this particular table, it inherits `stimulus.Condition` table as a
 `primary attribute`.
@@ -343,7 +343,7 @@ How to define properties
 
 We can set some properties and one of the properties that you **MUST** declare
 is `version` (line 2). `version` is an abstract property inherited from
-`Visual class <https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L11>`_.
+`Visual class <https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L11>`__.
 
 As you update/modify your code in development, make sure that you version up
 (by whole number) as you go.
@@ -359,7 +359,7 @@ How to define methods
 """""""""""""""""""""
 
 We can also set methods and **`showTrial`** is another abstract method
-inherited from `Visual <https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L70>`_. 
+inherited from `Visual <https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L70>`__. 
 In other words, you **MUST** declare it, otherwise it will throw an error.
 
 .. code-block:: MATLAB
@@ -390,7 +390,7 @@ First, `showTrial` takes 2 arguments, `self` and `cond`.
 **self** is a special keyword understood by MATLAB and **MUST** present as the
 **FIRST** argument when defining methods.
 
-**cond** is an argument that is in `struct <https://www.mathworks.com/help/matlab/ref/struct.html>`_.
+**cond** is an argument that is in `struct <https://www.mathworks.com/help/matlab/ref/struct.html>`__.
 Inside the struct, it must have information corresponding to what is defined in
 table defintion such as `bg_level`, `dot_level`, etc.
 We will further explain how condition is generated under 
@@ -400,13 +400,13 @@ Moving on to **line 3**, we have `self.trialBacklogSize = 100`.
 Now, we never defined trialBacklogSize as our property, yet it is still 
 understood here.
 How? Because we inherited `Visual` class which has trialBacklogSize as a
-`property <https://github.com/DonnieKim411/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L27>`_!
+`property <https://github.com/DonnieKim411/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L27>`__!
 This property dictates how many trials to accumulate before logging into 
 the trials table.
 If you do not specify, that is okay since the default value is set to 1.
 
 **In line 4**, now we finally draw a rectangular box by calling `Screen`.
-It is advised to read `this <http://psychtoolbox.org/docs/Screen-FillRect>`_
+It is advised to read `this <http://psychtoolbox.org/docs/Screen-FillRect>`__
 for better understanding of the explanation. Here, `Screen` is understood (even
 though we never defined what Screen is) as PsychToolbox is added in our MATLAB
 path. To draw a rectangular box, we specify `FillRect` as our first argument.
@@ -440,9 +440,9 @@ is commanding the computer to `prepare` what to draw. In other words, nothing
 has been `drawn` on the `display` yet. In order to do so, we have to `flip` to
 fresh out frame buffer. `checkedDroppoedFrames` is an option to pass whether
 to check or not. If set true and there are more than 3 frames dropped, it will
-`print out the dropped frame numbers <https://github.com/DonnieKim411/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Screen.m#L244>`_.
+`print out the dropped frame numbers <https://github.com/DonnieKim411/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Screen.m#L244>`__.
 
-For those interested in detail, you can click `framebuffer <https://en.wikipedia.org/wiki/Framebuffer>`_ and `page flip <https://en.wikipedia.org/wiki/Framebuffer#Page_flipping>`_.
+For those interested in detail, you can click `framebuffer <https://en.wikipedia.org/wiki/Framebuffer>`__ and `page flip <https://en.wikipedia.org/wiki/Framebuffer#Page_flipping>`__.
 
 **In line 13**, we now command to wait for `cond.dot_time - 1.5/self.fps`
 seconds. At this point, the background AND the dot are present on the display
@@ -462,7 +462,7 @@ the syncing.
 Stimulus Configuration
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Below is the content of `singledot.m <https://github.com/DonnieKim411/stimuli/blob/master/matlab/%2Bstimulus/%2Bconf/singledot.m>`_.
+Below is the content of `singledot.m <https://github.com/DonnieKim411/stimuli/blob/master/matlab/%2Bstimulus/%2Bconf/singledot.m>`__.
 
 .. code-block:: MATLAB
     :linenos:

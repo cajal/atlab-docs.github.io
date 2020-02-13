@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; atlab-docs 0.0.0 documentation</title>
+  <title>Kubernetes &mdash; atlab-docs 0.0.0 documentation</title>
   
 
   
@@ -43,8 +42,10 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stimulus" href="stimulus.html" />
+    <link rel="prev" title="Docker" href="docker.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,10 +94,15 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kubernetes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-your-account">Setup Your Account</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a></li>
 </ul>
 
@@ -143,12 +149,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Kubernetes</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/kubernetes.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -160,11 +168,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="kubernetes">
+<h1>Kubernetes<a class="headerlink" href="#kubernetes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li>Datajoint</li>
+<li>Docker</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Typically docker works great for small scale applications, such as deploying to your own personal machine, however often times there is a need to massively scale up which creates a problem.
+Docker by itself is a bit clucky to deploy to mutiple machines, thus at Google they develop a tool call Kubernetes, a container orchsertration solution.</p>
+<p>Kubernetes is basically a giant system that handles scheduling, deploying, and managing many containers from many users with different requirements.
+With this a single user can easily scale up their applications to use all the resources avliable on the cluster with only a .yaml file and a one line command.</p>
+</div>
+<div class="section" id="setup-your-account">
+<h2>Setup Your Account<a class="headerlink" href="#setup-your-account" title="Permalink to this headline">¶</a></h2>
+<p>Before starting, please message Daniel Sitonic on slack to get an K8 account, he will create an account for you on master node of the cluster which is at-kubemaster1.</p>
+<p>Upon your account creation, you will be able ssh in and being using K8</p>
+<p>K8 Terminology</p>
+<ul class="simple">
+<li>Cluster: A group of machines networked together with kubernetes consistent of a least one master node and a number of worker nodes</li>
+<li>Nodes: A machine or virtual machine with compute resources (CPUs, Mem, GPUs, Storage)</li>
+<li>Pods: A K8 environment that encapsulate a container that specifies the requirements of running container such as number of GPUs, memory, volumes to be mounted, etc.</li>
+<li>Containers: (Docker in this case)</li>
+</ul>
+</div>
 </div>
 
 
@@ -172,6 +205,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="stimulus.html" class="btn btn-neutral float-right" title="Stimulus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="docker.html" class="btn btn-neutral float-left" title="Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

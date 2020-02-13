@@ -20,11 +20,20 @@
   <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -86,6 +95,8 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a></li>
 </ul>
 
@@ -165,10 +176,28 @@
 <li class="toctree-l2"><a class="reference internal" href="datajoint.html#table-definition">Table Definition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datajoint.html#data-types">Data Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datajoint.html#external-storage">External Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datajoint.html#migrating-external-storage-from-v0-11-to-v0-12">Migrating External Storage from v0.11 to v0.12</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datajoint.html#dj-manual">dj.Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datajoint.html#dj-computed">dj.Computed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datajoint.html#querying-tables">Querying Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datajoint.html#datajoint-parallelizing-dj-computed-populate">DataJoint Parallelizing dj.Computed Populate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datajoint.html#other-resources">Other Resources:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#why-use-docker">Why Use Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#installing-docker">Installing Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#docker-terminology">Docker Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#writing-a-dockerfile">Writing a DockerFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#building-a-dockerfile">Building a DockerFile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#uploading-the-built-docker-image-to-dockerhub">Uploading the Built Docker Image to DockerHub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kubernetes.html#setup-your-account">Setup Your Account</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a><ul>
@@ -188,9 +217,9 @@
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 
