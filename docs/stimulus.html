@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Synicix ML Pipeline" href="synicix_ml_pipeline_tutorial.html" />
     <link rel="prev" title="Kubernetes" href="kubernetes.html" /> 
 </head>
 
@@ -128,6 +129,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#other-resources">Other Resources:</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="synicix_ml_pipeline_tutorial.html">Synicix ML Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="synicix_ml_pipeline_modules.html">Synicix ML Pipeline API Documentation</a></li>
 </ul>
 
             
@@ -437,12 +440,12 @@ but simply modify the configuration file.</p>
 <span class="cm">dot_time                    : float                         # (secs) time of each dot persists</span>
 <span class="cm">%}</span>
 
-<span class="n">classdef </span><span class="s">SingleDot &lt; dj.Manual &amp; stimulus.core.Visual</span><span class="p"></span>
+<span class="n">classdef</span> <span class="s">SingleDot</span> <span class="s">&lt;</span> <span class="s">dj.Manual</span> <span class="s">&amp;</span> <span class="s">stimulus.core.Visual</span>
     <span class="k">properties</span><span class="p">(</span><span class="n">Constant</span><span class="p">)</span>
         <span class="n">version</span> <span class="p">=</span> <span class="s">&#39;2&#39;</span>
-<span class="n">    end</span>
+    <span class="n">end</span>
 
-<span class="n">    </span><span class="s">methods</span><span class="p"></span>
+    <span class="s">methods</span>
 <span class="k">        function</span><span class="w"> </span><span class="nf">showTrial</span><span class="p">(</span>self, cond<span class="p">)</span><span class="w"></span>
 <span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">trialBacklogSize</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>  <span class="c">% see stimulus.core.Visual</span>
             <span class="n">Screen</span><span class="p">(</span><span class="s">&#39;FillRect&#39;</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">win</span><span class="p">,</span> <span class="n">cond</span><span class="p">.</span><span class="n">bg_level</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">rect</span><span class="p">)</span>
@@ -457,8 +460,8 @@ but simply modify the configuration file.</p>
             <span class="n">WaitSecs</span><span class="p">(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_time</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">/</span><span class="n">self</span><span class="p">.</span><span class="n">fps</span><span class="p">);</span>
             <span class="n">Screen</span><span class="p">(</span><span class="n">command</span><span class="p">.(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_shape</span><span class="p">),</span> <span class="n">self</span><span class="p">.</span><span class="n">win</span><span class="p">,</span> <span class="n">cond</span><span class="p">.</span><span class="n">dot_level</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
             <span class="n">self</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">))</span>
-<span class="n">        end</span>
-<span class="n">    </span><span class="s">end</span><span class="p"></span>
+        <span class="n">end</span>
+    <span class="s">end</span>
 <span class="k">end</span>
 </pre></div>
 </td></tr></table></div>
@@ -569,8 +572,8 @@ In other words, you <strong>MUST</strong> declare it, otherwise it will throw an
         <span class="n">WaitSecs</span><span class="p">(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_time</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">/</span><span class="n">self</span><span class="p">.</span><span class="n">fps</span><span class="p">);</span>
         <span class="n">Screen</span><span class="p">(</span><span class="n">command</span><span class="p">.(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_shape</span><span class="p">),</span> <span class="n">self</span><span class="p">.</span><span class="n">win</span><span class="p">,</span> <span class="n">cond</span><span class="p">.</span><span class="n">dot_level</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
         <span class="n">self</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">))</span>
-<span class="n">    end</span>
-<span class="s">end</span><span class="p"></span>
+    <span class="n">end</span>
+<span class="s">end</span>
 </pre></div>
 </td></tr></table></div>
 <p>This particular block deserves some detailed explanation.</p>
@@ -747,6 +750,8 @@ Assigned to Donnie Kim</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="synicix_ml_pipeline_tutorial.html" class="btn btn-neutral float-right" title="Synicix ML Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="kubernetes.html" class="btn btn-neutral float-left" title="Kubernetes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

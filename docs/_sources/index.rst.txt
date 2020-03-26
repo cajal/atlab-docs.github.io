@@ -14,8 +14,9 @@ Welcome to atlab-docs's documentation!
    docker
    kubernetes
    stimulus
-
-
+   synicix_ml_pipeline_tutorial
+   synicix_ml_pipeline_modules
+   
 Indices and tables
 ==================
 

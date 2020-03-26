@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>synicix_ml_pipeline.datajoint_tables package &mdash; atlab-docs 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="synicix_ml_pipeline.dataset_classes package" href="synicix_ml_pipeline.dataset_classes.html" />
+    <link rel="prev" title="synicix_ml_pipeline.criterions package" href="synicix_ml_pipeline.criterions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> atlab-docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="synicix_ml_pipeline_tutorial.html">Synicix ML Pipeline</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="synicix_ml_pipeline_modules.html">Synicix ML Pipeline API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="synicix_ml_pipeline.html">synicix_ml_pipeline package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="synicix_ml_pipeline.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="synicix_ml_pipeline.criterions.html">synicix_ml_pipeline.criterions package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">synicix_ml_pipeline.datajoint_tables package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synicix_ml_pipeline.dataset_classes.html">synicix_ml_pipeline.dataset_classes package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synicix_ml_pipeline.models.html">synicix_ml_pipeline.models package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synicix_ml_pipeline.trainers.html">synicix_ml_pipeline.trainers package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="synicix_ml_pipeline.html#module-synicix_ml_pipeline">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">atlab-docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="synicix_ml_pipeline_modules.html">Synicix ML Pipeline API Documentation</a> &raquo;</li>
+        
+          <li><a href="synicix_ml_pipeline.html">synicix_ml_pipeline package</a> &raquo;</li>
+        
+      <li>synicix_ml_pipeline.datajoint_tables package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/synicix_ml_pipeline.datajoint_tables.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="synicix-ml-pipeline-datajoint-tables-package">
+<h1>synicix_ml_pipeline.datajoint_tables package<a class="headerlink" href="#synicix-ml-pipeline-datajoint-tables-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-synicix_ml_pipeline.datajoint_tables.BaseTable">
+<span id="synicix-ml-pipeline-datajoint-tables-basetable-module"></span><h2>synicix_ml_pipeline.datajoint_tables.BaseTable module<a class="headerlink" href="#module-synicix_ml_pipeline.datajoint_tables.BaseTable" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable">
+<em class="property">class </em><code class="descclassname">synicix_ml_pipeline.datajoint_tables.BaseTable.</code><code class="descname">BaseTable</code><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/BaseTable.html#BaseTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Parent table for all datajoint classes which contains some useful function typcially used in tables and the schema pointer</p>
+<p>All datajoint tables part of the main framework will inherite from this table.</p>
+<dl class="staticmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable.compute_md5_hash">
+<em class="property">static </em><code class="descname">compute_md5_hash</code><span class="sig-paren">(</span><em>tuple_dict</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/BaseTable.html#BaseTable.compute_md5_hash"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable.compute_md5_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility helper function to compute the md5 hash given the tuple_dict</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>tuple_dict (dict): dictionary to hash</dd>
+<dt>Returns:</dt>
+<dd>str: 128 byte md5 hash string</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable.import_class_from_module">
+<em class="property">static </em><code class="descname">import_class_from_module</code><span class="sig-paren">(</span><em>module_name</em>, <em>class_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/BaseTable.html#BaseTable.import_class_from_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable.import_class_from_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function to handle import of classes from modules</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>module_name (str): name of the module containing the target class to import
+model_class_name (str): name of class to import from module</dd>
+<dt>Returns:</dt>
+<dd>user_defined_class: class imported from module</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-synicix_ml_pipeline.datajoint_tables.DatasetConfig">
+<span id="synicix-ml-pipeline-datajoint-tables-datasetconfig-module"></span><h2>synicix_ml_pipeline.datajoint_tables.DatasetConfig module<a class="headerlink" href="#module-synicix_ml_pipeline.datajoint_tables.DatasetConfig" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="synicix_ml_pipeline.datajoint_tables.DatasetConfig.DatasetConfig">
+<em class="property">class </em><code class="descclassname">synicix_ml_pipeline.datajoint_tables.DatasetConfig.</code><code class="descname">DatasetConfig</code><span class="sig-paren">(</span><em>dataset_dir=None</em>, <em>dataset_cache_dir=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/DatasetConfig.html#DatasetConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.DatasetConfig.DatasetConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">datajoint.user_tables.Manual</span></code>, <a class="reference internal" href="#synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable" title="synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable"><code class="xref py py-class docutils literal"><span class="pre">synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable</span></code></a></p>
+<blockquote>
+<div><p>A dj.Manual table class that handle the storage dataset configs with details on what dataset class and params to load that dataset and dataloader with.</p>
+<p>Initializing of this class will require the corresponding dataset_dir and dataset_cache_dir to be defined and passed into the __init__()</p>
+<p>Typical usage of this class is done by using the method insert_tuples. An example of this can be found in the Pipeline Configuration Jupyter Notebook</p>
+</div></blockquote>
+<p>Table definition:</p>
+<blockquote>
+<div>dataset_config_md5_hash : char(128)
+—
+dataset_file_name                   : varchar(256)
+dataset_type                        : varchar(256)
+dataset_class_module_name           : varchar(256)
+dataset_class_name                  : varchar(256)
+dataset_class_params                : longblob
+train_sampler_module_name           : varchar(256)
+train_sampler_class_name            : varchar(256)
+train_sampler_class_params          : longblob
+validation_sampler_module_name      : varchar(256)
+validation_sampler_class_name       : varchar(256)
+validation_sampler_class_params     : longblob
+test_sampler_module_name            : longblob
+test_sampler_class_name             : varchar(256)
+test_sampler_class_params           : longblob
+input_shape                         : longblob
+output_shape                        : longblob
+additional_model_params             : longblob</div></blockquote>
+<dl class="method">
+<dt id="synicix_ml_pipeline.datajoint_tables.DatasetConfig.DatasetConfig.get_dataloaders">
+<code class="descname">get_dataloaders</code><span class="sig-paren">(</span><em>key</em>, <em>batch_size</em>, <em>num_workers=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/DatasetConfig.html#DatasetConfig.get_dataloaders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.DatasetConfig.DatasetConfig.get_dataloaders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to build the dataloaders base off of the primary key and return it.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>key (dict): DatasetConfig datajoint table priamry key.
+batch_size (int): Batchsize of the train, validation, test dataloaders classes.
+num_workers (int): Number of pytorch dataloader workers to use for the dataloaders.</dd>
+<dt>Returns:</dt>
+<dd>pytorch.dataloader, pytorch.dataloader, pytorch.dataloader: Train, validation, and test dataloaders</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.datajoint_tables.DatasetConfig.DatasetConfig.insert_tuples">
+<code class="descname">insert_tuples</code><span class="sig-paren">(</span><em>tuple_dicts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/DatasetConfig.html#DatasetConfig.insert_tuples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.DatasetConfig.DatasetConfig.insert_tuples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to compute the hash, build the dataloader, get the input_shape, output_shape, and additional_model_params, and insert into DatasetConfig DJ table</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>tuple_dicts: A list of dict containing the attribute to be inserted in to DatasetConfig</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-synicix_ml_pipeline.datajoint_tables.ModelConfig">
+<span id="synicix-ml-pipeline-datajoint-tables-modelconfig-module"></span><h2>synicix_ml_pipeline.datajoint_tables.ModelConfig module<a class="headerlink" href="#module-synicix_ml_pipeline.datajoint_tables.ModelConfig" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="synicix_ml_pipeline.datajoint_tables.ModelConfig.ModelConfig">
+<em class="property">class </em><code class="descclassname">synicix_ml_pipeline.datajoint_tables.ModelConfig.</code><code class="descname">ModelConfig</code><span class="sig-paren">(</span><em>arg=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/ModelConfig.html#ModelConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.ModelConfig.ModelConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">datajoint.user_tables.Manual</span></code>, <a class="reference internal" href="#synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable" title="synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable"><code class="xref py py-class docutils literal"><span class="pre">synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable</span></code></a></p>
+<blockquote>
+<div><p>A dj.Manual table class that handle the storage of pytorch models definition along with some helper function to help load the models</p>
+<p>Typical usage of this class is done by using the method insert_tuples. An example of this can be found in the Pipeline Configuration Jupyter Notebook</p>
+</div></blockquote>
+<p>Table definition:</p>
+<blockquote>
+<div>model_config_md5_hash       : char(128)   # MD5 Hash of network_class_name + network_module_code
+—
+model_class_module_name     : varchar(256)
+model_class_name            : varchar(256)   # Class name of the network
+model_class_params          : longblob</div></blockquote>
+<dl class="classmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.ModelConfig.ModelConfig.get_model_class_and_params">
+<em class="property">classmethod </em><code class="descname">get_model_class_and_params</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/ModelConfig.html#ModelConfig.get_model_class_and_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.ModelConfig.ModelConfig.get_model_class_and_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to get the model and model_class params given a key</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>key (dict): A dictionary to restrict ModelConfig by down to one tuple</dd>
+<dt>Returns:</dt>
+<dd>&lt;user_defined_model_class&gt;, &lt;user_defined_model_class_params&gt;: Returns the model_class and model_class_params based on the key</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.ModelConfig.ModelConfig.insert_tuples">
+<em class="property">classmethod </em><code class="descname">insert_tuples</code><span class="sig-paren">(</span><em>tuple_dicts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/ModelConfig.html#ModelConfig.insert_tuples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.ModelConfig.ModelConfig.insert_tuples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to handle inserting to the DB with the correct format</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>tuple_dict: A dict containing the model_class_name and model_params
+module_name (str): Name of the module</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-synicix_ml_pipeline.datajoint_tables.TrainingConfig">
+<span id="synicix-ml-pipeline-datajoint-tables-trainingconfig-module"></span><h2>synicix_ml_pipeline.datajoint_tables.TrainingConfig module<a class="headerlink" href="#module-synicix_ml_pipeline.datajoint_tables.TrainingConfig" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingConfig.TrainingConfig">
+<em class="property">class </em><code class="descclassname">synicix_ml_pipeline.datajoint_tables.TrainingConfig.</code><code class="descname">TrainingConfig</code><span class="sig-paren">(</span><em>arg=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingConfig.html#TrainingConfig"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingConfig.TrainingConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">datajoint.user_tables.Manual</span></code>, <a class="reference internal" href="#synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable" title="synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable"><code class="xref py py-class docutils literal"><span class="pre">synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable</span></code></a></p>
+<blockquote>
+<div><p>A dj.Manual table class that handle the storage of training configuration such the trainer class to use and various other parameters realted to that.</p>
+<p>Typical usage of this class is done by using the method insert_tuples. An example of this can be found in the Pipeline Configuration Jupyter Notebook</p>
+</div></blockquote>
+<p>Table definition:</p>
+<blockquote>
+<div>training_config_md5_hash   : char(128) # MD5 Hash of attribute below
+—
+trainer_class_module_name                       : varchar(256)
+trainer_class_name                              : varchar(256)
+trainer_class_params                            : longblob
+batch_size                                      : smallint unsigned
+epoch_limit                                     : int unsigned
+optimizer_class_module_name                     : varchar(256)
+optimizer_class_name                            : varchar(256)
+optimizer_class_params                          : longblob
+criterion_class_module_name                     : varchar(256)
+criterion_class_name                            : varchar(256)
+criterion_class_params                          : longblob</div></blockquote>
+<dl class="classmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingConfig.TrainingConfig.get_criterion_class_and_params">
+<em class="property">classmethod </em><code class="descname">get_criterion_class_and_params</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingConfig.html#TrainingConfig.get_criterion_class_and_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingConfig.TrainingConfig.get_criterion_class_and_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to load the criterion_class and criterion_class_params from the DB base on the key given</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>key (dict): key to restrict TrainingConfig by into one tuple</dd>
+<dt>Returns:</dt>
+<dd>&lt;user_defined_criterion_class&gt;, &lt;user_defined_criterion_class_params&gt;: Returns the criterion_class and criterion_class_params for the given key</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingConfig.TrainingConfig.get_optimizer_class_and_params">
+<em class="property">classmethod </em><code class="descname">get_optimizer_class_and_params</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingConfig.html#TrainingConfig.get_optimizer_class_and_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingConfig.TrainingConfig.get_optimizer_class_and_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to load the optimizer_class and optimizer_class_params from the DB base on the key given</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>key (dict): key to restrict TrainingConfig by into one tuple</dd>
+<dt>Returns:</dt>
+<dd>&lt;user_defined_optimizer_class&gt;, &lt;user_defined_optimizer_class_params&gt;: Returns the optimzer_class and optimizer_class_params for the given key</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingConfig.TrainingConfig.insert_tuples">
+<em class="property">classmethod </em><code class="descname">insert_tuples</code><span class="sig-paren">(</span><em>tuple_dicts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingConfig.html#TrainingConfig.insert_tuples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingConfig.TrainingConfig.insert_tuples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to handle inserting Training Configs by computing the md5_hash for each entry and inserting into the database</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>tuple_dict: A dict or a list of dicts containing the columns of the table defintion of TrainingConfig</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-synicix_ml_pipeline.datajoint_tables.TrainingResult">
+<span id="synicix-ml-pipeline-datajoint-tables-trainingresult-module"></span><h2>synicix_ml_pipeline.datajoint_tables.TrainingResult module<a class="headerlink" href="#module-synicix_ml_pipeline.datajoint_tables.TrainingResult" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult">
+<em class="property">class </em><code class="descclassname">synicix_ml_pipeline.datajoint_tables.TrainingResult.</code><code class="descname">TrainingResult</code><span class="sig-paren">(</span><em>dataset_dir=''</em>, <em>dataset_cache_dir=''</em>, <em>model_save_dir=''</em>, <em>device=None</em>, <em>num_workers=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingResult.html#TrainingResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">datajoint.user_tables.Computed</span></code>, <a class="reference internal" href="#synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable" title="synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable"><code class="xref py py-class docutils literal"><span class="pre">synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable</span></code></a></p>
+<blockquote>
+<div><p>A dj.Computed that handle the training of the networks based on the dataset, model, and training configs defined in TrainingTask</p>
+<p>Typical usage of this class is done via the K8/TrainingDeployment/training_script.py with K8 deploy script nameed training_deployment.yaml</p>
+</div></blockquote>
+<p>Table definition:</p>
+<blockquote>
+<div>-&gt; TrainingTask
+—
+test_score                                                : float
+training_epoch_loss_history               : <a class="reference external" href="mailto:blob&#37;&#52;&#48;external_training_result">blob<span>&#64;</span>external_training_result</a>
+validation_epoch_loss_history             : <a class="reference external" href="mailto:blob&#37;&#52;&#48;external_training_result">blob<span>&#64;</span>external_training_result</a>
+regularization_loss_history               : <a class="reference external" href="mailto:blob&#37;&#52;&#48;external_training_result">blob<span>&#64;</span>external_training_result</a>
+model_class_params_history                : <a class="reference external" href="mailto:blob&#37;&#52;&#48;external_training_result">blob<span>&#64;</span>external_training_result</a>
+model_save_path                                   : varchar(256)
+utc_insert_time = CURRENT_TIMESTAMP   : timestamp</div></blockquote>
+<dl class="method">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult.get_test_set_outputs_targets_and_losses">
+<code class="descname">get_test_set_outputs_targets_and_losses</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingResult.html#TrainingResult.get_test_set_outputs_targets_and_losses"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult.get_test_set_outputs_targets_and_losses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that loads the trained model and returns all test_set outputs, targets, and loss</p>
+<p>Typically use for additional analysis</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>key (dict): Dict to restrict TrainingResult.key_source by which is TrainingTask</dd>
+<dt>Returns:</dt>
+<dd>dict: A dictionary containing outputs, targets, and losses Tensors. keys = (outputs, targets, losses)</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult.get_trainer">
+<code class="descname">get_trainer</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingResult.html#TrainingResult.get_trainer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult.get_trainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function that get the trainer based on the key and returns it</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>key (dict): Dict to restrict TrainingResult.key_source by which is TrainingTask</dd>
+<dt>Returns:</dt>
+<dd>&lt;user_defined_class&gt;: Returns the trainer given by the configuration defined by TrainingTask restrict by the given key</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult.make">
+<code class="descname">make</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingResult.html#TrainingResult.make"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult.make" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called during population to handle training of the specific TrainingTask restricted by key and save the relavent information into the table</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>key (dict): Dict to restrict TrainingResult.key_source by which is TrainingTask</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult.plot_training_epoch_loss_history">
+<em class="property">classmethod </em><code class="descname">plot_training_epoch_loss_history</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingResult.html#TrainingResult.plot_training_epoch_loss_history"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingResult.TrainingResult.plot_training_epoch_loss_history" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility analysis function that generate a plot of the training, validation, and test curves.
+By default it sets the title to “&lt;model_class_name&gt;/&lt;training_task_md5_hash&gt;”</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>key (dict): Dict to restrict TrainingResult.key_source by which is TrainingTask</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-synicix_ml_pipeline.datajoint_tables.TrainingTask">
+<span id="synicix-ml-pipeline-datajoint-tables-trainingtask-module"></span><h2>synicix_ml_pipeline.datajoint_tables.TrainingTask module<a class="headerlink" href="#module-synicix_ml_pipeline.datajoint_tables.TrainingTask" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingTask.TrainingTask">
+<em class="property">class </em><code class="descclassname">synicix_ml_pipeline.datajoint_tables.TrainingTask.</code><code class="descname">TrainingTask</code><span class="sig-paren">(</span><em>arg=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingTask.html#TrainingTask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingTask.TrainingTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">datajoint.user_tables.Manual</span></code>, <a class="reference internal" href="#synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable" title="synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable"><code class="xref py py-class docutils literal"><span class="pre">synicix_ml_pipeline.datajoint_tables.BaseTable.BaseTable</span></code></a></p>
+<blockquote>
+<div><p>A dj.Manual table class that handle the storage of training tasks which is a subset of all possiable combination of DatasetConfig, ModelConfig and DatasetConfig</p>
+<p>Typical usage of this class is done by using the method insert_tuples. An example of this can be found in the Pipeline Configuration Jupyter Notebook</p>
+</div></blockquote>
+<p>Table definition:</p>
+<blockquote>
+<div>training_task_md5_hash   : char(128) # MD5 Hash of attribute below
+—
+-&gt; DatasetConfig
+-&gt; ModelConfig
+-&gt; TrainingConfig</div></blockquote>
+<dl class="classmethod">
+<dt id="synicix_ml_pipeline.datajoint_tables.TrainingTask.TrainingTask.insert_tuple">
+<em class="property">classmethod </em><code class="descname">insert_tuple</code><span class="sig-paren">(</span><em>tuple_dicts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/datajoint_tables/TrainingTask.html#TrainingTask.insert_tuple"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.datajoint_tables.TrainingTask.TrainingTask.insert_tuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to handle inserting Training Tasks by computing the md5_hash for each entry and inserting into the database</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>tuple_dict: A dict or a list of dicts containing the columns of the table defintion of TrainingTask</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-synicix_ml_pipeline.datajoint_tables">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-synicix_ml_pipeline.datajoint_tables" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="synicix_ml_pipeline.dataset_classes.html" class="btn btn-neutral float-right" title="synicix_ml_pipeline.dataset_classes package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="synicix_ml_pipeline.criterions.html" class="btn btn-neutral float-left" title="synicix_ml_pipeline.criterions package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Synicix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

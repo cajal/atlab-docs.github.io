@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>synicix_ml_pipeline.models.SimpleMLP &mdash; atlab-docs 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'0.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> atlab-docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datajoint.html">DataJoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../kubernetes.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stimulus.html">Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../synicix_ml_pipeline_tutorial.html">Synicix ML Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../synicix_ml_pipeline_modules.html">Synicix ML Pipeline API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">atlab-docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>synicix_ml_pipeline.models.SimpleMLP</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for synicix_ml_pipeline.models.SimpleMLP</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<div class="viewcode-block" id="SimpleMLP"><a class="viewcode-back" href="../../../synicix_ml_pipeline.models.html#synicix_ml_pipeline.models.SimpleMLP.SimpleMLP">[docs]</a><span class="k">class</span> <span class="nc">SimpleMLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A very simple example of a multilayer perceptron network illustrating the typical model design for synicix_ml_pipeline</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">,</span> <span class="n">output_shape</span><span class="p">,</span> <span class="n">num_hidden_layers</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">l1_loss_lamda</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">l2_loss_lamda</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize function for SimpleMLP</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            input_shape (tuple): Shape of the input tensor or list of tensor</span>
+<span class="sd">            output_shape (tuple): Shape of the output tensor or list of tensor</span>
+<span class="sd">            num_hidden_layers (int): Number of fully connected hidden layers</span>
+<span class="sd">            hidden_size (int): Hidden layer sizes</span>
+<span class="sd">            l1_loss_lamda: Multiplier for L1 Loss</span>
+<span class="sd">            l2_loss_lamda: Multiplier for L2 Loss</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span> <span class="o">=</span> <span class="n">input_shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_shape</span> <span class="o">=</span> <span class="n">output_shape</span>
+        
+        <span class="c1"># Focus only on first input and output</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_shape_prod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">input_shape_prod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">output_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_shape_prod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">output_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_shape_prod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">output_shape</span><span class="p">)</span>
+        
+        <span class="c1"># Fully Connected Layers</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape_prod</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">))</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">ELU</span><span class="p">())</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_hidden_layers</span><span class="p">):</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">))</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">ELU</span><span class="p">())</span>
+            <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">))</span>
+        
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_shape_prod</span><span class="p">))</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span>
+
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">layers</span><span class="p">)</span>
+        
+        <span class="c1"># l1_loss_lamda</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l1_loss_lamda</span> <span class="o">=</span> <span class="n">l1_loss_lamda</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">l2_loss_lamda</span> <span class="o">=</span> <span class="n">l2_loss_lamda</span>
+       
+<div class="viewcode-block" id="SimpleMLP.forward"><a class="viewcode-back" href="../../../synicix_ml_pipeline.models.html#synicix_ml_pipeline.models.SimpleMLP.SimpleMLP.forward">[docs]</a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Forward function for SimpleMLP</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            x (Tensor or list of Tensor): input batch, by default it only uses the first input tensor</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tensor: Output of the model given the input</span>
+<span class="sd">            Tensor: Regularlization loss to be added during the loss backpropergation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">output_shape</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_regularizer</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SimpleMLP.compute_regularizer"><a class="viewcode-back" href="../../../synicix_ml_pipeline.models.html#synicix_ml_pipeline.models.SimpleMLP.SimpleMLP.compute_regularizer">[docs]</a>    <span class="k">def</span> <span class="nf">compute_regularizer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Regularlization Computation Function</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tensor: Regularlization loss to be added during the loss backpropergation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">regularizer_loss</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+            <span class="n">regularizer_loss</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">l1_loss_lamda</span> <span class="o">*</span> <span class="n">params</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">l2_loss_lamda</span> <span class="o">*</span> <span class="n">params</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">regularizer_loss</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Synicix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

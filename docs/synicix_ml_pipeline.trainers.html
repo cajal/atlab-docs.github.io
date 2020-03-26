@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>synicix_ml_pipeline.trainers package &mdash; atlab-docs 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'0.0.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="synicix_ml_pipeline.models package" href="synicix_ml_pipeline.models.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> atlab-docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="synicix_ml_pipeline_tutorial.html">Synicix ML Pipeline</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="synicix_ml_pipeline_modules.html">Synicix ML Pipeline API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="synicix_ml_pipeline.html">synicix_ml_pipeline package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="synicix_ml_pipeline.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="synicix_ml_pipeline.criterions.html">synicix_ml_pipeline.criterions package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synicix_ml_pipeline.datajoint_tables.html">synicix_ml_pipeline.datajoint_tables package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synicix_ml_pipeline.dataset_classes.html">synicix_ml_pipeline.dataset_classes package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synicix_ml_pipeline.models.html">synicix_ml_pipeline.models package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">synicix_ml_pipeline.trainers package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="synicix_ml_pipeline.html#module-synicix_ml_pipeline">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">atlab-docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="synicix_ml_pipeline_modules.html">Synicix ML Pipeline API Documentation</a> &raquo;</li>
+        
+          <li><a href="synicix_ml_pipeline.html">synicix_ml_pipeline package</a> &raquo;</li>
+        
+      <li>synicix_ml_pipeline.trainers package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/synicix_ml_pipeline.trainers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="synicix-ml-pipeline-trainers-package">
+<h1>synicix_ml_pipeline.trainers package<a class="headerlink" href="#synicix-ml-pipeline-trainers-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-synicix_ml_pipeline.trainers.NNTrainer">
+<span id="synicix-ml-pipeline-trainers-nntrainer-module"></span><span id="nntrainer"></span><h2>synicix_ml_pipeline.trainers.NNTrainer module<a class="headerlink" href="#module-synicix_ml_pipeline.trainers.NNTrainer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer">
+<em class="property">class </em><code class="descclassname">synicix_ml_pipeline.trainers.NNTrainer.</code><code class="descname">NNTrainer</code><span class="sig-paren">(</span><em>train_dataloader</em>, <em>validation_dataloader</em>, <em>test_dataloader</em>, <em>device</em>, <em>model_class</em>, <em>model_class_params</em>, <em>optimizer_class</em>, <em>optimizer_class_params</em>, <em>criterion_class</em>, <em>criterion_class_params</em>, <em>model_save_path</em>, <em>max_epochs</em>, <em>training_strip_length</em>, <em>sucessive_validation_score_decline_tolerance</em>, <em>fp16=False</em>, <em>fp16_opt_level=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.8)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>NNTrainer is a trainer class provided with synicix_ml_pipeline. It handles training and saving/loading of models with some additional useful features.</p>
+<p>One of the most notable features it provide is integrated fp16 or mixed precision training which can drastically improve your network training speed at little to no loss in performance
+This is provided via Nvidia’s the apex libaray: <a class="reference external" href="https://github.com/NVIDIA/apex">https://github.com/NVIDIA/apex</a></p>
+<p>The other feature is a built in early stoping algorithm which was implemented base off this paper: <a class="reference external" href="https://page.mi.fu-berlin.de/prechelt/Biblio/stop_tricks1997.pdf">https://page.mi.fu-berlin.de/prechelt/Biblio/stop_tricks1997.pdf</a></p>
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.eval_step">
+<code class="descname">eval_step</code><span class="sig-paren">(</span><em>data</em>, <em>return_outputs_targets_and_loss=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.eval_step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.eval_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evluate step function to handle training of one batch</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>data (tuple): Data point sample obtain from pytorch dataloader
+return_outputs_targets_and_loss  If true then it will return outputs_targets_and_losses as a dict</dd>
+<dt>Returns:</dt>
+<dd>float: Model’s test dataset loss if return_outputs_targets_and_loss False
+dict(outputs, target, loss): If return_outputs_targets_and_loss True</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>return_outputs_targets_and_loss=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the test dataset through the model and return the average loss</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>return_outputs_targets_and_loss (bool): If true then it will return outputs_targets_and_losses as a dict</dd>
+<dt>Returns:</dt>
+<dd>float: Model’s test dataset loss if return_outputs_targets_and_loss False
+dict(outputs, target, loss): If return_outputs_targets_and_loss True</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.load_best_performing_model">
+<code class="descname">load_best_performing_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.load_best_performing_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.load_best_performing_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the best performing model which is the previous save file of the lowest validation score form model_save_path</p>
+<p>Parameters:
+Returns:</p>
+<blockquote>
+<div>None</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.load_model">
+<code class="descname">load_model</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.load_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.load_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load model, optmizer, and amp from path</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>path (str): path of where to load model file from</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.save_model">
+<code class="descname">save_model</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.save_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.save_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save model optmizer, and amp to model_save_path</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.should_early_stop">
+<code class="descname">should_early_stop</code><span class="sig-paren">(</span><em>current_epoch</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.should_early_stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.should_early_stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks wheter to early stop or not based on the the previous validation score and training strip performance</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>current_epoch (int): Current epoch, mainly use for printing</dd>
+<dt>Returns:</dt>
+<dd>bool: Whether to early stop or not</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.train">
+<code class="descname">train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to start the training</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.train_step">
+<code class="descname">train_step</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.train_step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.train_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Training step function to handle training of one batch</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>data (tuple): Data point sample obtain from pytorch dataloader</dd>
+<dt>Returns:</dt>
+<dd>pytorch.loss: Model’s loss for the given batch
+Tensor: Regularlization loss for the given batch</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/synicix_ml_pipeline/trainers/NNTrainer.html#NNTrainer.validate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#synicix_ml_pipeline.trainers.NNTrainer.NNTrainer.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the validation dataset through the model and return the average loss</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>float: model’s validation dataset loss</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-synicix_ml_pipeline.trainers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-synicix_ml_pipeline.trainers" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="synicix_ml_pipeline.models.html" class="btn btn-neutral float-left" title="synicix_ml_pipeline.models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Synicix
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
