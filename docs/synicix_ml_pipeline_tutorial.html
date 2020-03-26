@@ -132,11 +132,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">Definition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Additional Details on the Attributes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#implementing-a-trainer-class">Implementing a Trainer Class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">TrainingTask</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Definition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#inserting-into-trainingtask">Inserting into TrainingTask</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">TrainingResult</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id5">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">TrainingResult</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Definition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#populating-trainingresult">Populating TrainingResult:</a></li>
 </ul>
 </li>
@@ -324,27 +328,27 @@ Futher details will be covered the following sections.</p>
 18
 19
 20
-21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">definition</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">    dataset_config_md5_hash : char(128)</span>
-<span class="s1">    ---</span>
-<span class="s1">    dataset_file_name                   : varchar(256)</span>
-<span class="s1">    dataset_type                        : varchar(256)</span>
-<span class="s1">    dataset_class_module_name           : varchar(256)</span>
-<span class="s1">    dataset_class_name                  : varchar(256)</span>
-<span class="s1">    dataset_class_params                : longblob</span>
-<span class="s1">    train_sampler_module_name           : varchar(256)</span>
-<span class="s1">    train_sampler_class_name            : varchar(256)</span>
-<span class="s1">    train_sampler_class_params          : longblob</span>
-<span class="s1">    validation_sampler_module_name      : varchar(256)</span>
-<span class="s1">    validation_sampler_class_name       : varchar(256)</span>
-<span class="s1">    validation_sampler_class_params     : longblob</span>
-<span class="s1">    test_sampler_module_name            : longblob</span>
-<span class="s1">    test_sampler_class_name             : varchar(256)</span>
-<span class="s1">    test_sampler_class_params           : longblob</span>
-<span class="s1">    input_shape                         : longblob</span>
-<span class="s1">    output_shape                        : longblob</span>
-<span class="s1">    additional_model_params             : longblob</span>
-<span class="s1">    &#39;&#39;&#39;</span>
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    dataset_config_md5_hash : char(128)</span>
+<span class="s2">    ---</span>
+<span class="s2">    dataset_file_name                   : varchar(256)</span>
+<span class="s2">    dataset_type                        : varchar(256)</span>
+<span class="s2">    dataset_class_module_name           : varchar(256)</span>
+<span class="s2">    dataset_class_name                  : varchar(256)</span>
+<span class="s2">    dataset_class_params                : longblob</span>
+<span class="s2">    train_sampler_module_name           : varchar(256)</span>
+<span class="s2">    train_sampler_class_name            : varchar(256)</span>
+<span class="s2">    train_sampler_class_params          : longblob</span>
+<span class="s2">    validation_sampler_module_name      : varchar(256)</span>
+<span class="s2">    validation_sampler_class_name       : varchar(256)</span>
+<span class="s2">    validation_sampler_class_params     : longblob</span>
+<span class="s2">    test_sampler_module_name            : longblob</span>
+<span class="s2">    test_sampler_class_name             : varchar(256)</span>
+<span class="s2">    test_sampler_class_params           : longblob</span>
+<span class="s2">    input_shape                         : longblob</span>
+<span class="s2">    output_shape                        : longblob</span>
+<span class="s2">    additional_model_params             : longblob</span>
+<span class="s2">    &quot;&quot;&quot;</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -447,13 +451,13 @@ Futher details will be covered the following sections.</p>
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">definition</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">    model_config_md5_hash       : char(128)   # MD5 Hash of network_class_name + network_module_code</span>
-<span class="s1">    ---</span>
-<span class="s1">    model_class_module_name     : varchar(256)</span>
-<span class="s1">    model_class_name            : varchar(256)   # Class name of the network</span>
-<span class="s1">    model_class_params          : longblob</span>
-<span class="s1">    &#39;&#39;&#39;</span>
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    model_config_md5_hash       : char(128)   # MD5 Hash of network_class_name + network_module_code</span>
+<span class="s2">    ---</span>
+<span class="s2">    model_class_module_name     : varchar(256)</span>
+<span class="s2">    model_class_name            : varchar(256)   # Class name of the network</span>
+<span class="s2">    model_class_params          : longblob</span>
+<span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -529,7 +533,7 @@ Futher details will be covered the following sections.</p>
 <span class="s2">    criterion_class_module_name                     : varchar(256)</span>
 <span class="s2">    criterion_class_name                            : varchar(256)</span>
 <span class="s2">    criterion_class_params                          : longblob</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+<span class="s2">&quot;&quot;&quot;</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -567,6 +571,28 @@ Futher details will be covered the following sections.</p>
 </ul>
 <p><strong>Example:</strong>
 <a class="reference internal" href="synicix_ml_pipeline.trainers.html#nntrainer"><span class="std std-ref">synicix_ml_pipeline.trainers.NNTrainer module</span></a></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>TrainingTask<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>This table serves as a subset of all possiable Dataset, Model and Training Config combination. Whatever is inserted here will be trained with its result recorded in TrainnigResult</p>
+<div class="section" id="id5">
+<h3>Definition<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    training_task_md5_hash   : char(128) # MD5 Hash of attribute below</span>
+<span class="s2">    ---</span>
+<span class="s2">    -&gt; DatasetConfig</span>
+<span class="s2">    -&gt; ModelConfig</span>
+<span class="s2">    -&gt; TrainingConfig</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 <div class="section" id="inserting-into-trainingtask">
 <h3>Inserting into TrainingTask<a class="headerlink" href="#inserting-into-trainingtask" title="Permalink to this headline">¶</a></h3>
@@ -611,10 +637,10 @@ Futher details will be covered the following sections.</p>
 </td></tr></table></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>TrainingResult<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3>Definition<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h2>TrainingResult<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h3>Definition<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3

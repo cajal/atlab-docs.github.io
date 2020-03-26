@@ -100,7 +100,7 @@ Definition
 .. code-block:: python
     :linenos:
 
-    definition = '''
+    definition = """
         dataset_config_md5_hash : char(128)
         ---
         dataset_file_name                   : varchar(256)
@@ -120,7 +120,7 @@ Definition
         input_shape                         : longblob
         output_shape                        : longblob
         additional_model_params             : longblob
-        '''
+        """
 
 Additional Details on the Attributes
 ------------------------------------
@@ -196,13 +196,13 @@ Definition
 .. code-block:: python
     :linenos:
 
-    definition = '''
+    definition = """
         model_config_md5_hash       : char(128)   # MD5 Hash of network_class_name + network_module_code
         ---
         model_class_module_name     : varchar(256)
         model_class_name            : varchar(256)   # Class name of the network
         model_class_params          : longblob
-        '''
+    """
 
 Implementation of a Model Class
 -------------------------------
@@ -260,7 +260,7 @@ Definition
         criterion_class_module_name                     : varchar(256)
         criterion_class_name                            : varchar(256)
         criterion_class_params                          : longblob
-        """
+    """
 
 Additional Details on the Attributes
 ------------------------------------
@@ -295,6 +295,26 @@ Implementing a Trainer Class
 
 **Example:** 
 :ref:`NNTrainer`
+
+TrainingTask
+============
+
+This table serves as a subset of all possiable Dataset, Model and Training Config combination. Whatever is inserted here will be trained with its result recorded in TrainnigResult
+
+
+Definition
+----------
+
+.. code-block:: python
+    :linenos:
+
+    definition = """
+        training_task_md5_hash   : char(128) # MD5 Hash of attribute below
+        ---
+        -> DatasetConfig
+        -> ModelConfig
+        -> TrainingConfig
+    """
 
 Inserting into TrainingTask
 ---------------------------
