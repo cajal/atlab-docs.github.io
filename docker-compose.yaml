@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  sphnix:
+    build: .
+    volumes:
+      - ./:/src
+    command: make html
