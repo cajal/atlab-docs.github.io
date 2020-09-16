@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Primer on stimulus syncing &mdash; atlab-docs 0.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> atlab-docs
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Pipeline</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">atlab-docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Primer on stimulus syncing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/stimulus_sync.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="primer-on-stimulus-syncing">
+<h1>Primer on stimulus syncing<a class="headerlink" href="#primer-on-stimulus-syncing" title="Permalink to this headline">¶</a></h1>
+<p>When recording a scan there are 3 computers involved:</p>
+<ul class="simple">
+<li><p>The <cite>stimulus</cite> computer has psychtoolbox and takes care of showing the images in the monitor. A stimulus is made of many trials and each trial lasts for one or more ‘flips’ (see Glossary below). This computer records the time of each flip in each trial in stimulus.Trial in <cite>stimulus clock</cite> time (i.e, time measured in this computer, in seconds).</p></li>
+<li><p>The <cite>scanimage</cite> computer which takes care of scanning and saving the scan. During scanning this sends a <cite>frameSync</cite> signal (see Glossary) which gets routed to the behavior computer (this is a cable so there’s no latency).</p></li>
+<li><p>The <cite>behavior</cite> computer is the master controller. This runs 2pMaster and takes care of starting the stimulus, starting the cameras (pupil, posture), start recording treadmill, audio and temperature, and sending an start signal to the scanimage computer. This computer takes care of saving the videos, inserting scan information in experiment.Scan and saving the <cite>behavior file</cite>. The behavior is an h5 file that records the scanimage’s frameSync signal, the photodiode signal (see Glossary), some behavioral measures (wheel position, audio, temperature); all of them timestamped in <cite>behavior clock</cite> time (or <cite>master clock</cite> time). Behavior clock time is an integer counter that increases every 0.1 usecs and wraps around at 2 ** 32 - 1. This time is VERY exact.</p></li>
+</ul>
+<div class="section" id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>frameSync signal:</dt><dd><p>The scanning laser turns on at the start of each frame and turns off at the end (while the objective is moved to the start of the next frame); this signal is recorded by scanimage as an analog signal (~0V for laser off, ~5V for laser on) and sent directly to the behavior computer.</p>
+</dd>
+</dl>
+<img alt="_images/frameSync.png" src="_images/frameSync.png" />
+<dl class="simple">
+<dt>photodiode signal:</dt><dd><p>During stimulus presentation, a little square in the upper left corner of the screen flashes going from white-to-gray, gray-to-white, black-to-gray and gray-to-black; we have a photodiode sensor recording those intensity sensors taped to that corner of the screen. The photodiode signal is the signal recorded from this photodiode. This signal encodes flips.</p>
+</dd>
+</dl>
+<img alt="_images/photodiode_signal.png" src="_images/photodiode_signal.png" />
+<dl class="simple">
+<dt>flip:</dt><dd><p>A flip is a change of the photodiode from white-to-gray, gray-to-white, black-to-gray or gray-to-black (for instance that photodiode signal above has around 19). A flip time is the time at the flip. These are generated by psychtoolbox and are used to make sure stimulus was correctly presented (they have to follow a specified order) and to synchronize what was shown on the screen to all other behavioral measures (because we have times for this in the <cite>stimulus clock</cite> recorded in stimulus.Trial and in the <cite>behavior clock</cite> recorded in the behavior file).</p>
+</dd>
+</dl>
+<p><em>Goal of syncing:</em> Because the stimulus flip times are recorded in <cite>stimulus clock</cite> time while everything else is recorded in the <cite>behavior clock</cite> time, we have to synchronize both so we can know what stimulus was happening during x recording frame or x behavior measure.</p>
+</div>
+<div class="section" id="how-syncing-works">
+<h2>How syncing works:<a class="headerlink" href="#how-syncing-works" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="stimulus-behaviorsync">
+<h3>stimulus.BehaviorSync<a class="headerlink" href="#stimulus-behaviorsync" title="Permalink to this headline">¶</a></h3>
+<p>For each recorded frame in the scan, find its time in <cite>behavior clock</cite>. This requires reading the frameSync signal, find all the rising edges (when the scan of that frame start) and record all their timestamps in <cite>behavior clock</cite> (this timestamps are already in the behavior file so it’s a matter of finding the indices of each rising edge).</p>
+</div>
+<div class="section" id="stimulus-sync">
+<h3>stimulus.Sync<a class="headerlink" href="#stimulus-sync" title="Permalink to this headline">¶</a></h3>
+<p>Find frame times in <cite>behavior clock</cite> (same way as BehaviorSync), call it <cite>frame_times</cite>; find flips in photodiode signal and their respective time in <cite>behavior clock</cite> (again finding the indices of the flips and indexing the timestamp vector), call it <cite>photodiode_flip_times</cite>; get all flip times from stimulus.Trial in <cite>stimulus clock</cite> time, call it <cite>trial_flip_times</cite>; fit a line between <cite>photodiode_flip_times</cite> and <cite>trial_flip_times</cite> to find the <cite>stimulus clock</cite> time equivalent to the <cite>behavior clock time</cite> of zero; and add this to <cite>frame_times</cite> to have the frame times in <cite>stimulus clock</cite>.</p>
+</div>
+<div class="section" id="some-other-details-that-are-taken-care-in-code">
+<h3>Some other details that are taken care in code<a class="headerlink" href="#some-other-details-that-are-taken-care-in-code" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Time for the analog signals in the behavior file (frameSync, photodiode, wheel) is recorded in packets (i.e., each 1K samples are given the same timepoint corresponding to the exact time the last of the 2000 samples was recorded). We interpolate to get the right time for all samples before any syncing (see pipeline.utils.h5.ts2sec).</p></li>
+<li><p>We transform the <cite>behavior clock</cite> time into seconds (from counter times). So behavior file has time in counters (0-2**32) but all saved stuff is in seconds (0-infinity). (See pipeline.utils.h5.ts2sec)</p></li>
+<li><p>I haven’t explained the way flips are encoded or decoded (see pipeline.utils.h5.find_flips)</p></li>
+<li><p>All of the code dealing with behavior files is able to deal with lost packets or NaNs in the behavor file by interpolating with NaNs.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Synicix
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

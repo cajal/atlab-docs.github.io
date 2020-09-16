@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,39 +11,32 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'./',
-              VERSION:'0.0.0',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Synicix ML Pipeline" href="synicix_ml_pipeline_tutorial.html" />
+    <link rel="next" title="Pipeline" href="pipeline.html" />
     <link rel="prev" title="Kubernetes" href="kubernetes.html" /> 
 </head>
 
@@ -59,7 +51,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> atlab-docs
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> atlab-docs
           
 
           
@@ -86,6 +78,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -129,13 +122,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#other-resources">Other Resources:</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="synicix_ml_pipeline_tutorial.html">Synicix ML Pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="synicix_ml_pipeline_modules.html">Synicix ML Pipeline API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Pipeline</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -174,7 +167,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Stimulus</li>
     
@@ -220,14 +213,14 @@ is simply checking <strong>Nvidia X Server Settings</strong></p>
 must be <em>known</em> to MATLAB environment.</p>
 <p><span class="raw-html"><font color="red"><strong>MATLAB (MUST BE R2016b or above)</strong></font></span></p>
 <ul class="simple">
-<li><a class="reference external" href="http://psychtoolbox.org/download.html#installation">PsychToolbox</a> : Stimulus package uses PsychToolbox as a backend</li>
-<li><a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/63218-datajoint">datajoint</a> : It is best to simply install via <em>Add On</em> on MATLAB console</li>
+<li><p><a class="reference external" href="http://psychtoolbox.org/download.html#installation">PsychToolbox</a> : Stimulus package uses PsychToolbox as a backend</p></li>
+<li><p><a class="reference external" href="https://www.mathworks.com/matlabcentral/fileexchange/63218-datajoint">datajoint</a> : It is best to simply install via <em>Add On</em> on MATLAB console</p></li>
 </ul>
 <p>Following packages must be cloned and added to <em>PATH</em> of the MATLAB</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/datajoint/mym.git">mym</a> : datajoint extension to recognize data type <em>BLOB</em></li>
-<li><a class="reference external" href="https://github.com/cajal/pipeline.git">pipeline</a> : need to be able to access <em>experiment</em> module</li>
-<li><a class="reference external" href="https://github.com/cajal/stimuli.git">stimulus</a> : stimulus package itself</li>
+<li><p><a class="reference external" href="https://github.com/datajoint/mym.git">mym</a> : datajoint extension to recognize data type <em>BLOB</em></p></li>
+<li><p><a class="reference external" href="https://github.com/cajal/pipeline.git">pipeline</a> : need to be able to access <em>experiment</em> module</p></li>
+<li><p><a class="reference external" href="https://github.com/cajal/stimuli.git">stimulus</a> : stimulus package itself</p></li>
 </ul>
 <p>In order to add these packages to <strong>PATH</strong>, click <strong>Set Path</strong> on MATLAB
 console and <strong>Add with Subfolders</strong>. See image below for what needs to be added</p>
@@ -242,7 +235,7 @@ computer. Note, when you actually run the experiment, you will do it through
 generate your own stimulus and need to debug/troubleshoot.</p>
 <div class="section" id="step-1-initialize-screen">
 <h3>Step 1: Initialize screen<a class="headerlink" href="#step-1-initialize-screen" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">open</span>
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">open</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -251,7 +244,7 @@ generate your own stimulus and need to debug/troubleshoot.</p>
 <p>Stimulus trials are generated and queued by the scripts in the +stimulus/+conf
 directory. You need to know which configuration script needs to be run.</p>
 <p>For example, to prepare the <strong>singledot</strong> stimulus, execute</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">singledot</span>
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">singledot</span>
 </pre></div>
 </td></tr></table></div>
 <p>While the stimulus is loaded, you will see a sequence of dots . and asterisks
@@ -267,7 +260,7 @@ will not take as long.</p>
 Table <cite>experiment.Scan</cite> contains a dummy entry that can be used for testing.
 Its primary key is <cite>struct(‘animal_id’, 0, ‘session’, 0, ‘scan_idx’, 0)</cite>.
 During the experiment, the correct scan identification must be provided.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;animal_id&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;session&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;scan_idx&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">false</span><span class="p">)</span>
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;animal_id&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;session&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;scan_idx&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="nb">false</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 <p>Note, <em>false</em> is given so that we <em>do not log</em> our dummy entries to
@@ -283,7 +276,7 @@ Or to queue a new set of trials, run the configuration script again.</p>
 <div class="section" id="step-5-exit">
 <h3>Step 5. Exit<a class="headerlink" href="#step-5-exit" title="Permalink to this headline">¶</a></h3>
 <p>To close the stimulus program,</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">close</span>
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">stimulus</span><span class="p">.</span><span class="n">close</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -292,7 +285,7 @@ Or to queue a new set of trials, run the configuration script again.</p>
 <h2>Stimulus Repository Structure<a class="headerlink" href="#stimulus-repository-structure" title="Permalink to this headline">¶</a></h2>
 <p>The structure of Stimulus repository can be confusing for new users and needs
 to be explained. The basic structure can be broken down as the following tree:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">stimuli</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">stimuli</span>
 <span class="na">├── python</span>
 <span class="na">└── matlab</span>
   <span class="na">├── +xtimulus</span>
@@ -345,10 +338,10 @@ Inside <cite>+stimulus</cite>, we have <cite>+conf</cite>, <cite>+core</cite>, <
 files:</p>
 <blockquote>
 <div><ul class="simple">
-<li><strong>+conf</strong> : contains configuration files (singledot.m, mattise.m, etc) that specify parameters for some stimulus presentation</li>
-<li><strong>+core</strong> : controls and interacts with your display and Psychtoolbox. Most likely, you won’t have to change anything here. But if you need to update something, consult with either Saumil or Dimitri</li>
-<li><strong>+utils</strong> : some help functions. Not so important unless you can find a function to be called universally across different stimuli.</li>
-<li><strong>m files</strong> (SingleDot.m, Matisse.m, etc): Display m files that dictate how the stimulus should be displayed.</li>
+<li><p><strong>+conf</strong> : contains configuration files (singledot.m, mattise.m, etc) that specify parameters for some stimulus presentation</p></li>
+<li><p><strong>+core</strong> : controls and interacts with your display and Psychtoolbox. Most likely, you won’t have to change anything here. But if you need to update something, consult with either Saumil or Dimitri</p></li>
+<li><p><strong>+utils</strong> : some help functions. Not so important unless you can find a function to be called universally across different stimuli.</p></li>
+<li><p><strong>m files</strong> (SingleDot.m, Matisse.m, etc): Display m files that dictate how the stimulus should be displayed.</p></li>
 </ul>
 </div></blockquote>
 <p>Two important points here.</p>
@@ -377,20 +370,20 @@ both <cite>matlab/conf</cite> and <cite>matlab/+stimulus/+conf</cite> once final
 <h2>Designing a New Stimulus<a class="headerlink" href="#designing-a-new-stimulus" title="Permalink to this headline">¶</a></h2>
 <p>There are two parts in designing:</p>
 <ol class="arabic simple">
-<li>Stimulus Presentation - <cite>HOW</cite> the stimulus is displayed on the monitor/projector (e.g. SingleDot.m)</li>
-<li>Stimulus Configuration - <cite>PARAMETERS</cite> for the stimulus one designed. (e.g. singledot.m)</li>
+<li><p>Stimulus Presentation - <cite>HOW</cite> the stimulus is displayed on the monitor/projector (e.g. SingleDot.m)</p></li>
+<li><p>Stimulus Configuration - <cite>PARAMETERS</cite> for the stimulus one designed. (e.g. singledot.m)</p></li>
 </ol>
 <p>Often times, one doesn’t probably need to design a new stimulus presentation
 but simply modify the configuration file.</p>
 <p>Here, we demonstrate a demo of designing a <cite>single dot</cite> stimulus</p>
 <div class="figure align-center" id="id2">
 <a class="reference internal image-reference" href="_images/single_dot.gif"><img alt="_images/single_dot.gif" src="_images/single_dot.gif" style="width: 274.5px; height: 158.5px;" /></a>
-<p class="caption"><span class="caption-text">single dot stimulus demo</span></p>
+<p class="caption"><span class="caption-text">single dot stimulus demo</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="stimulus-presentation">
 <h3>Stimulus Presentation<a class="headerlink" href="#stimulus-presentation" title="Permalink to this headline">¶</a></h3>
 <p>Below is the content of <a class="reference external" href="https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/SingleDot.m">SingleDot.m</a>.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -440,8 +433,8 @@ but simply modify the configuration file.</p>
 <span class="cm">dot_time                    : float                         # (secs) time of each dot persists</span>
 <span class="cm">%}</span>
 
-<span class="n">classdef</span> <span class="s">SingleDot</span> <span class="s">&lt;</span> <span class="s">dj.Manual</span> <span class="s">&amp;</span> <span class="s">stimulus.core.Visual</span>
-    <span class="k">properties</span><span class="p">(</span><span class="n">Constant</span><span class="p">)</span>
+<span class="n">classdef</span> <span class="s">SingleDot</span> <span class="o">&lt;</span> <span class="n">dj</span><span class="p">.</span><span class="n">Manual</span> <span class="o">&amp;</span> <span class="n">stimulus</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">Visual</span>
+    <span class="n">properties</span><span class="p">(</span><span class="n">Constant</span><span class="p">)</span>
         <span class="n">version</span> <span class="p">=</span> <span class="s">&#39;2&#39;</span>
     <span class="n">end</span>
 
@@ -456,10 +449,10 @@ but simply modify the configuration file.</p>
             <span class="n">rect</span> <span class="p">=</span> <span class="p">[</span><span class="n">x_pos</span><span class="o">-</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_xsize</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_pos</span><span class="o">-</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_ysize</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">x_pos</span><span class="o">+</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_xsize</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_pos</span><span class="o">+</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_ysize</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">width</span><span class="p">;</span>
             <span class="n">command</span> <span class="p">=</span> <span class="n">struct</span><span class="p">(</span><span class="s">&#39;rect&#39;</span><span class="p">,</span> <span class="s">&#39;FillRect&#39;</span><span class="p">,</span> <span class="s">&#39;oval&#39;</span><span class="p">,</span> <span class="s">&#39;FillOval&#39;</span><span class="p">);</span>
             <span class="n">Screen</span><span class="p">(</span><span class="n">command</span><span class="p">.(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_shape</span><span class="p">),</span> <span class="n">self</span><span class="p">.</span><span class="n">win</span><span class="p">,</span> <span class="n">cond</span><span class="p">.</span><span class="n">dot_level</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">))</span>
+            <span class="n">self</span><span class="p">.</span><span class="nb">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="nb">false</span><span class="p">))</span>
             <span class="n">WaitSecs</span><span class="p">(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_time</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">/</span><span class="n">self</span><span class="p">.</span><span class="n">fps</span><span class="p">);</span>
             <span class="n">Screen</span><span class="p">(</span><span class="n">command</span><span class="p">.(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_shape</span><span class="p">),</span> <span class="n">self</span><span class="p">.</span><span class="n">win</span><span class="p">,</span> <span class="n">cond</span><span class="p">.</span><span class="n">dot_level</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
-            <span class="n">self</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">))</span>
+            <span class="n">self</span><span class="p">.</span><span class="nb">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="nb">false</span><span class="p">))</span>
         <span class="n">end</span>
     <span class="s">end</span>
 <span class="k">end</span>
@@ -470,7 +463,7 @@ but simply modify the configuration file.</p>
 <p>First off, let’s start with the table defintion</p>
 <div class="literal-block-wrapper docutils container" id="single-dot-table-def">
 <div class="code-block-caption"><span class="caption-text">single-dot-table-def</span><a class="headerlink" href="#single-dot-table-def" title="Permalink to this code">¶</a></div>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -511,7 +504,7 @@ designing a table.</p>
 <div class="section" id="how-to-define-a-class">
 <h4>How to define a class<a class="headerlink" href="#how-to-define-a-class" title="Permalink to this headline">¶</a></h4>
 <p>Now let’s look at how the class is defined and what it inherits:</p>
-<div class="highlight-MATLAB"><div class="highlight"><pre><span></span><span class="k">classdef</span> <span class="n">SingleDot</span> <span class="o">&lt;</span> <span class="n">dj</span><span class="p">.</span><span class="n">Manual</span> <span class="o">&amp;</span> <span class="n">stimulus</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">Visual</span>
+<div class="highlight-MATLAB notranslate"><div class="highlight"><pre><span></span><span class="k">classdef</span> <span class="n">SingleDot</span> <span class="o">&lt;</span> <span class="n">dj</span><span class="p">.</span><span class="n">Manual</span> <span class="o">&amp;</span> <span class="n">stimulus</span><span class="p">.</span><span class="n">core</span><span class="p">.</span><span class="n">Visual</span>
 </pre></div>
 </div>
 <p>First, your class name must match with your filename (e.g. SingleDot). And it
@@ -528,9 +521,9 @@ is <cite>version</cite> (line 2). <cite>version</cite> is an abstract property i
 <a class="reference external" href="https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L11">Visual class</a>.</p>
 <p>As you update/modify your code in development, make sure that you version up
 (by whole number) as you go.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">properties</span><span class="p">(</span><span class="n">Constant</span><span class="p">)</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">properties</span><span class="p">(</span><span class="n">Constant</span><span class="p">)</span>
     <span class="n">version</span> <span class="p">=</span> <span class="s">&#39;2&#39;</span>
 <span class="k">end</span>
 </pre></div>
@@ -541,7 +534,7 @@ is <cite>version</cite> (line 2). <cite>version</cite> is an abstract property i
 <p>We can also set methods and <strong>`showTrial`</strong> is another abstract method
 inherited from <a class="reference external" href="https://github.com/cajal/stimuli/blob/master/matlab/%2Bstimulus/%2Bcore/Visual.m#L70">Visual</a>.
 In other words, you <strong>MUST</strong> declare it, otherwise it will throw an error.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -557,9 +550,9 @@ In other words, you <strong>MUST</strong> declare it, otherwise it will throw an
 14
 15
 16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">methods</span>
-<span class="k">    function</span><span class="w"> </span><span class="nf">showTrial</span><span class="p">(</span>self, cond<span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">trialBacklogSize</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>  <span class="c">% see stimulus.core.Visual</span>
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">methods</span>
+    <span class="s">function</span> <span class="s">showTrial(self,</span> <span class="s">cond)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">trialBacklogSize</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>  <span class="c">% see stimulus.core.Visual</span>
         <span class="n">Screen</span><span class="p">(</span><span class="s">&#39;FillRect&#39;</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">win</span><span class="p">,</span> <span class="n">cond</span><span class="p">.</span><span class="n">bg_level</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">rect</span><span class="p">)</span>
         <span class="n">width</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">rect</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
         <span class="n">height</span> <span class="p">=</span> <span class="n">self</span><span class="p">.</span><span class="n">rect</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
@@ -568,10 +561,10 @@ In other words, you <strong>MUST</strong> declare it, otherwise it will throw an
         <span class="n">rect</span> <span class="p">=</span> <span class="p">[</span><span class="n">x_pos</span><span class="o">-</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_xsize</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_pos</span><span class="o">-</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_ysize</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">x_pos</span><span class="o">+</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_xsize</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y_pos</span><span class="o">+</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_ysize</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">width</span><span class="p">;</span>
         <span class="n">command</span> <span class="p">=</span> <span class="n">struct</span><span class="p">(</span><span class="s">&#39;rect&#39;</span><span class="p">,</span> <span class="s">&#39;FillRect&#39;</span><span class="p">,</span> <span class="s">&#39;oval&#39;</span><span class="p">,</span> <span class="s">&#39;FillOval&#39;</span><span class="p">);</span>
         <span class="n">Screen</span><span class="p">(</span><span class="n">command</span><span class="p">.(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_shape</span><span class="p">),</span> <span class="n">self</span><span class="p">.</span><span class="n">win</span><span class="p">,</span> <span class="n">cond</span><span class="p">.</span><span class="n">dot_level</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">))</span>
+        <span class="n">self</span><span class="p">.</span><span class="nb">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="nb">false</span><span class="p">))</span>
         <span class="n">WaitSecs</span><span class="p">(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_time</span> <span class="o">-</span> <span class="mf">1.5</span><span class="o">/</span><span class="n">self</span><span class="p">.</span><span class="n">fps</span><span class="p">);</span>
         <span class="n">Screen</span><span class="p">(</span><span class="n">command</span><span class="p">.(</span><span class="n">cond</span><span class="p">.</span><span class="n">dot_shape</span><span class="p">),</span> <span class="n">self</span><span class="p">.</span><span class="n">win</span><span class="p">,</span> <span class="n">cond</span><span class="p">.</span><span class="n">dot_level</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="n">false</span><span class="p">))</span>
+        <span class="n">self</span><span class="p">.</span><span class="nb">flip</span><span class="p">(</span><span class="n">struct</span><span class="p">(</span><span class="s">&#39;checkDroppedFrames&#39;</span><span class="p">,</span> <span class="nb">false</span><span class="p">))</span>
     <span class="n">end</span>
 <span class="s">end</span>
 </pre></div>
@@ -640,7 +633,7 @@ the syncing.</p>
 <div class="section" id="stimulus-configuration">
 <span id="stimulus-configuration-label"></span><h3>Stimulus Configuration<a class="headerlink" href="#stimulus-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Below is the content of <a class="reference external" href="https://github.com/DonnieKim411/stimuli/blob/master/matlab/%2Bstimulus/%2Bconf/singledot.m">singledot.m</a>.</p>
-<div class="highlight-MATLAB"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-MATLAB notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -672,15 +665,15 @@ the syncing.</p>
 <span class="n">control</span> <span class="p">=</span> <span class="n">stimulus</span><span class="p">.</span><span class="n">getControl</span><span class="p">;</span>
 <span class="n">control</span><span class="p">.</span><span class="n">clearAll</span><span class="p">()</span>   <span class="c">% clear trial queue and cached conditions</span>
 
-<span class="n">params</span> <span class="p">=</span> <span class="n">struct</span><span class="p">(</span><span class="c">...</span>
-    <span class="s">&#39;bg_level&#39;</span><span class="p">,</span>    <span class="mi">255</span><span class="p">,</span>         <span class="c">... (0-255) the index of the background luminance</span>
-    <span class="s">&#39;dot_level&#39;</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>           <span class="c">... (0-255) the index of the dot luminance</span>
-    <span class="s">&#39;dot_xsize&#39;</span><span class="p">,</span>   <span class="mf">0.125</span><span class="p">,</span>        <span class="c">... (fraction of the x length) size of dot x</span>
-    <span class="s">&#39;dot_ysize&#39;</span><span class="p">,</span>   <span class="mf">0.125</span><span class="p">,</span>        <span class="c">... (fraction of the x length) size of dot y</span>
-    <span class="s">&#39;dot_x&#39;</span><span class="p">,</span>       <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>       <span class="c">... (fraction of the x length, -0.5 to 0.5) position of dot on x axis</span>
-    <span class="s">&#39;dot_y&#39;</span><span class="p">,</span>       <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.28</span><span class="p">,</span><span class="mf">0.28</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>      <span class="c">... (fraction of the x length) position of dot on y axis</span>
-    <span class="s">&#39;dot_shape&#39;</span><span class="p">,</span>   <span class="s">&#39;oval&#39;</span><span class="p">,</span>       <span class="c">... shape of dot, rect or oval</span>
-    <span class="s">&#39;dot_time&#39;</span><span class="p">,</span>    <span class="mf">0.25</span>           <span class="c">... (secs) time each dot persists</span>
+<span class="n">params</span> <span class="p">=</span> <span class="n">struct</span><span class="p">(</span><span class="k">...</span>
+    <span class="s">&#39;bg_level&#39;</span><span class="p">,</span>    <span class="mi">255</span><span class="p">,</span>         <span class="k">...</span><span class="c"> (0-255) the index of the background luminance</span>
+    <span class="s">&#39;dot_level&#39;</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>           <span class="k">...</span><span class="c"> (0-255) the index of the dot luminance</span>
+    <span class="s">&#39;dot_xsize&#39;</span><span class="p">,</span>   <span class="mf">0.125</span><span class="p">,</span>        <span class="k">...</span><span class="c"> (fraction of the x length) size of dot x</span>
+    <span class="s">&#39;dot_ysize&#39;</span><span class="p">,</span>   <span class="mf">0.125</span><span class="p">,</span>        <span class="k">...</span><span class="c"> (fraction of the x length) size of dot y</span>
+    <span class="s">&#39;dot_x&#39;</span><span class="p">,</span>       <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span>       <span class="k">...</span><span class="c"> (fraction of the x length, -0.5 to 0.5) position of dot on x axis</span>
+    <span class="s">&#39;dot_y&#39;</span><span class="p">,</span>       <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.28</span><span class="p">,</span><span class="mf">0.28</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>      <span class="k">...</span><span class="c"> (fraction of the x length) position of dot on y axis</span>
+    <span class="s">&#39;dot_shape&#39;</span><span class="p">,</span>   <span class="s">&#39;oval&#39;</span><span class="p">,</span>       <span class="k">...</span><span class="c"> shape of dot, rect or oval</span>
+    <span class="s">&#39;dot_time&#39;</span><span class="p">,</span>    <span class="mf">0.25</span>           <span class="k">...</span><span class="c"> (secs) time each dot persists</span>
     <span class="p">);</span>
 
 <span class="c">% generate conditions</span>
@@ -751,7 +744,7 @@ Assigned to Donnie Kim</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="synicix_ml_pipeline_tutorial.html" class="btn btn-neutral float-right" title="Synicix ML Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pipeline.html" class="btn btn-neutral float-right" title="Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="kubernetes.html" class="btn btn-neutral float-left" title="Kubernetes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -763,11 +756,19 @@ Assigned to Donnie Kim</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, Synicix
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -778,7 +779,6 @@ Assigned to Donnie Kim</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
