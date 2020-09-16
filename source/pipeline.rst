@@ -1,5 +1,5 @@
 ========================================
-Pipeline to process scans
+Pipeline
 ========================================
 Explanation of our pipeline to process scans and stacks. `Code <https://github.com/cajal/pipeline>`_.
 
