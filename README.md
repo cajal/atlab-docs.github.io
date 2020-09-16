@@ -1,0 +1,1 @@
+To build the docs, run ```docker-compose up```
