@@ -1,5 +1,5 @@
 =======================================
-Primer on stimulus syncing
+Stimulus Syncing
 =======================================
 When recording a scan there are 3 computers involved:
 

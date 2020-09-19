@@ -15,6 +15,7 @@ Welcome to atlab-docs's documentation!
    kubernetes
    stimulus
    pipeline
+   stimulus_sync
    
 Indices and tables
 ==================
