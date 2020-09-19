@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Primer on stimulus syncing &mdash; atlab-docs 0.0.0 documentation</title>
+  <title>Stimulus Syncing &mdash; atlab-docs 0.0.0 documentation</title>
   
 
   
@@ -35,7 +35,8 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Pipeline" href="pipeline.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,12 +86,22 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="datajoint.html">DataJoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kubernetes.html">Kubernetes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stimulus.html">Stimulus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Pipeline</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Stimulus Syncing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#glossary">Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-syncing-works">How syncing works:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stimulus-behaviorsync">stimulus.BehaviorSync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stimulus-sync">stimulus.Sync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#some-other-details-that-are-taken-care-in-code">Some other details that are taken care in code</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -137,7 +148,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Primer on stimulus syncing</li>
+      <li>Stimulus Syncing</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,8 +167,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="primer-on-stimulus-syncing">
-<h1>Primer on stimulus syncing<a class="headerlink" href="#primer-on-stimulus-syncing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="stimulus-syncing">
+<h1>Stimulus Syncing<a class="headerlink" href="#stimulus-syncing" title="Permalink to this headline">¶</a></h1>
 <p>When recording a scan there are 3 computers involved:</p>
 <ul class="simple">
 <li><p>The <cite>stimulus</cite> computer has psychtoolbox and takes care of showing the images in the monitor. A stimulus is made of many trials and each trial lasts for one or more ‘flips’ (see Glossary below). This computer records the time of each flip in each trial in stimulus.Trial in <cite>stimulus clock</cite> time (i.e, time measured in this computer, in seconds).</p></li>
@@ -209,6 +220,13 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="pipeline.html" class="btn btn-neutral float-left" title="Pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
